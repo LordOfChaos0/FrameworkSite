@@ -1,11 +1,82 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Триада Статики</title>
     <script src="https://cdn.jsdelivr.net/npm/@unocss/runtime"></script>
     <link rel="stylesheet" href="./uno.css">
+    <style>
+        .progress-container {
+            width: 100%;
+            background-color: #e5e7eb;
+            border-radius: 4px;
+            overflow: hidden;
+            height: 20px;
+        }
+        .progress-bar {
+            height: 100%;
+            border-radius: 4px;
+            transition: width 0.3s ease;
+        }
+        .gatsby-bar { background-color: #8b5cf6; }
+        .hugo-bar { background-color: #10b981; }
+        .jekyll-bar { background-color: #f59e0b; }
+        
+        .comparison-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+            gap: 12px;
+        }
+        .framework-label {
+            min-width: 80px;
+            font-weight: 600;
+            font-size: 0.875rem;
+        }
+        .progress-wrapper {
+            flex: 1;
+        }
+        .progress-value {
+            min-width: 40px;
+            text-align: right;
+            font-weight: 600;
+            font-size: 0.875rem;
+        }
+
+        /* Исправления для логотипов */
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            border-radius: 8px;
+            padding: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .framework-logo {
+            object-fit: contain;
+            max-width: 100%;
+            height: auto;
+        }
+        
+        @media (max-width: 768px) {
+            .comparison-row {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 6px;
+            }
+            .framework-label {
+                min-width: auto;
+            }
+            .progress-value {
+                text-align: left;
+            }
+            .logo-container {
+                padding: 6px;
+            }
+        }
+    </style>
 </head>
 <body class="body-def reset-spacing">
 
@@ -20,191 +91,331 @@
     </nav>
     
     <main class="main-def">
-        <div>
-        <section class="card">
+        <!-- Гер-секция -->
+        <section class="card text-center">
             <h1 class="main-title">Gatsby. Hugo. Jekyll.</h1>
             <h3 class="subtitle">Мощь React, скорость Go или классика Ruby? Найдите свой идеальный фреймворк для статического сайта.</h3>
         </section>
-        </div>
 
-        <div class="flex-row items-center gap-4 md:flex md:items-center">
-            <section class="card">
-                <div class="flex items-center gap-4">
-                    <div>
-                        <div class="flex items-center gap-4">
-                            <div>
-                            <h3 class="text-xl font-bold">Gatsby</h3>
-                            <h4>Мощь и экосистема</h4>
-                            </div>
-                            <img src="./src/images/gatsby_logo.jpeg" alt="Описание" class="w-25 h-7 rounded-lg md:w-36 md:h-10">
-                        </div>
-                        <p>
-                            Краткое описание: "Идеален для сложных проектов, где нужна динамика SPA (Single Page Application) на статической основе. 
-                            Использует GraphQL для управления данными и обладает огромной коллекцией плагинов."
-                        </p>
-                        <p>Сильные стороны:</p>
-                        <ul>
-                            <li><p>React & GraphQL</p></li>
-                            <li><p>Огромная экосистема</p></li>
-                            <li><p>Готовность к PWA</p></li>
-                        </ul>
-                        <a href="./Gatsby.html">Узнать больше о Gatsby</a>
+        <!-- Карточки фреймворков -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <!-- Gatsby -->
+            <section class="card bg-purple-50 border-l-4 border-purple-500">
+                <div class="flex items-center gap-4 mb-4">
+                    <div class="flex-1">
+                        <h3 class="text-xl font-bold text-purple-800">Gatsby</h3>
+                        <h4 class="text-purple-600">Мощь и экосистема</h4>
                     </div>
-            </section>
-
-            <section class="card">
-                <div class="flex items-center gap-4">
-                    <div>
-                        <div class="flex items-center gap-4">
-                            <div>
-                            <h3 class="text-xl font-bold">Hugo</h3>
-                            <h4>Скорость сборки</h4>
-                            </div>
-                            <img src="./src/images/hugo_logo.jpg" alt="Описание" class="w-20 h-22 rounded-lg">
-                        </div>
-                    <p>
-                        Краткое описание: "Самый быстрый генератор статических сайтов. Собирает тысячи страниц за секунды. 
-                        Не требует зависимостей, идеален для больших блогов, документации и сайтов, где важна каждая миллисекунда."
-                    </p>
-                    <p>Сильные стороны:</p>
-                    <ul>
-                        <li><p>Невероятная скорость</p></li>
-                        <li><p>Простота установки</p></li>
-                        <li><p>Встроенная панель админа</p></li>
-                    </ul>
-                    <a href="./Hugo.html">Узнать больше о Hugo</a>
+                    <div class="logo-container">
+                        <img src="./src/images/gatsby_logo.jpeg" alt="Gatsby Logo" class="framework-logo w-16 h-16 md:w-20 md:h-20">
                     </div>
                 </div>
-            </section>
-
-            <section class="card">
-                <div class="flex items-center gap-4">
-                    <div>
-                    <div class="flex items-center gap-4">
-                        <div>
-                            <h3 class="text-xl font-bold">Jekyll</h3>
-                            <h4>Простота и классика</h4>
-                        </div>
-                        <img src="./src/images/jekyll_logo.jpg" alt="Описание" class="w-48 h-20 rounded-lg">
+                <p class="mb-4">
+                    Идеален для сложных проектов, где нужна динамика SPA (Single Page Application) на статической основе. 
+                    Использует GraphQL для управления данными и обладает огромной коллекцией плагинов.
+                </p>
+                <div class="space-y-2 mb-4">
+                    <div class="flex items-center">
+                        <div class="w-2 h-2 bg-purple-500 rounded-full mr-2"></div>
+                        <span class="text-sm">React & GraphQL</span>
                     </div>
-                    <p>
-                        Краткое описание: "Лучший выбор для быстрого старта, особенно для блогов. 
-                        Глубокая интеграция с GitHub Pages делает деплой невероятно простым. 
-                        Минималистичный и проверенный временем."
-                    </p>
-                    <p>Сильные стороны:</p>
-                    <ul>
-                        <li><p>Низкий порог входа</p></li>
-                        <li><p>Лучшая поддержка GitHub Pages</p></li>
-                        <li><p>Огромное сообщество</p></li>
-                    </ul>
-                    <a href="./Jekyll.html">Узнать больше о Jekyll</a>
+                    <div class="flex items-center">
+                        <div class="w-2 h-2 bg-purple-500 rounded-full mr-2"></div>
+                        <span class="text-sm">Огромная экосистема</span>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="w-2 h-2 bg-purple-500 rounded-full mr-2"></div>
+                        <span class="text-sm">Готовность к PWA</span>
                     </div>
                 </div>
+                <a href="./Pages/Gatsby.html" class="text-purple-600 font-semibold hover:text-purple-800 inline-flex items-center">
+                    Узнать больше о Gatsby 
+                    <span class="ml-1">→</span>
+                </a>
+            </section>
+
+            <!-- Hugo -->
+            <section class="card bg-green-50 border-l-4 border-green-500">
+                <div class="flex items-center gap-4 mb-4">
+                    <div class="flex-1">
+                        <h3 class="text-xl font-bold text-green-800">Hugo</h3>
+                        <h4 class="text-green-600">Скорость сборки</h4>
+                    </div>
+                    <div class="logo-container">
+                        <img src="./src/images/hugo_logo.jpg" alt="Hugo Logo" class="framework-logo w-16 h-16 md:w-20 md:h-20">
+                    </div>
+                </div>
+                <p class="mb-4">
+                    Самый быстрый генератор статических сайтов. Собирает тысячи страниц за секунды. 
+                    Не требует зависимостей, идеален для больших блогов, документации и сайтов, где важна каждая миллисекунда.
+                </p>
+                <div class="space-y-2 mb-4">
+                    <div class="flex items-center">
+                        <div class="w-2 h-2 bg-green-500 rounded-full mr-2"></div>
+                        <span class="text-sm">Невероятная скорость</span>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="w-2 h-2 bg-green-500 rounded-full mr-2"></div>
+                        <span class="text-sm">Простота установки</span>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="w-2 h-2 bg-green-500 rounded-full mr-2"></div>
+                        <span class="text-sm">Встроенная панель админа</span>
+                    </div>
+                </div>
+                <a href="./Pages/Hugo.html" class="text-green-600 font-semibold hover:text-green-800 inline-flex items-center">
+                    Узнать больше о Hugo 
+                    <span class="ml-1">→</span>
+                </a>
+            </section>
+
+            <!-- Jekyll -->
+            <section class="card bg-amber-50 border-l-4 border-amber-500">
+                <div class="flex items-center gap-4 mb-4">
+                    <div class="flex-1">
+                        <h3 class="text-xl font-bold text-amber-800">Jekyll</h3>
+                        <h4 class="text-amber-600">Простота и классика</h4>
+                    </div>
+                    <div class="logo-container">
+                        <img src="./src/images/jekyll_logo.jpg" alt="Jekyll Logo" class="framework-logo w-16 h-16 md:w-20 md:h-20">
+                    </div>
+                </div>
+                <p class="mb-4">
+                    Лучший выбор для быстрого старта, особенно для блогов. 
+                    Глубокая интеграция с GitHub Pages делает деплой невероятно простым. 
+                    Минималистичный и проверенный временем.
+                </p>
+                <div class="space-y-2 mb-4">
+                    <div class="flex items-center">
+                        <div class="w-2 h-2 bg-amber-500 rounded-full mr-2"></div>
+                        <span class="text-sm">Низкий порог входа</span>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="w-2 h-2 bg-amber-500 rounded-full mr-2"></div>
+                        <span class="text-sm">Лучшая поддержка GitHub Pages</span>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="w-2 h-2 bg-amber-500 rounded-full mr-2"></div>
+                        <span class="text-sm">Огромное сообщество</span>
+                    </div>
+                </div>
+                <a href="./Pages/Jekyll.html" class="text-amber-600 font-semibold hover:text-amber-800 inline-flex items-center">
+                    Узнать больше о Jekyll 
+                    <span class="ml-1">→</span>
+                </a>
             </section>
         </div>
-        <!--block md:hidden-->
-        <section class="card flex-center">
-        <div class="custom-container">
-        <h1 class="main-title">Сравнение фреймворков для статических сайтов</h1>
-        <h3 class="subtitle">Краткий анализ Gatsby, Hugo и Jekyll для помощи в выборе оптимального решения</h3>
-        
-        <div class="table-container">
-            <table>
-                <thead>
-                    <tr class="table-header">
-                        <th scope="col" class="table-header-cell">Критерий</th>
-                        <th scope="col" class="table-header-cell">Gatsby</th>
-                        <th scope="col" class="table-header-cell">Hugo</th>
-                        <th scope="col" class="table-header-cell">Jekyll</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="table-row">
-                        <th scope="row" class="table-header-cell">Технологический стек</th>
-                        <td class="table-body-cell">React, GraphQL, Node.js</td>
-                        <td class="table-body-cell">Go (Golang)</td>
-                        <td class="table-body-cell">Ruby, Liquid</td>
-                    </tr>
-                    <tr class="table-row">
-                        <th scope="row" class="table-header-cell">Скорость сборки (1000 страниц)</th>
-                        <td class="table-body-cell"><span class="rating-average">30-60 секунд</span></td>
-                        <td class="table-body-cell"><span class="rating-good">2-5 секунд</span></td>
-                        <td class="table-body-cell"><span class="rating-poor">60-120 секунд</span></td>
-                    </tr>
-                    <tr class="table-row">
-                        <th scope="row" class="table-header-cell">Порог входа</th>
-                        <td class="table-body-cell"><span class="rating-poor">Высокий</span></td>
-                        <td class="table-body-cell"><span class="rating-average">Средний</span></td>
-                        <td class="table-body-cell"><span class="rating-good">Низкий</span></td>
-                    </tr>
-                    <tr class="table-row">
-                        <th scope="row" class="table-header-cell">Система шаблонов</th>
-                        <td class="table-body-cell">JSX компоненты</td>
-                        <td class="table-body-cell">Go templates</td>
-                        <td class="table-body-cell">Liquid templates</td>
-                    </tr>
-                    <tr class="table-row">
-                        <th scope="row" class="table-header-cell">Управление данными</th>
-                        <td class="table-body-cell">GraphQL, различные источники</td>
-                        <td class="table-body-cell">Фронт-мatter, JSON, CSV</td>
-                        <td class="table-body-cell">Фронт-мatter, данные из YAML</td>
-                    </tr>
-                    <tr class="table-row">
-                        <th scope="row" class="table-header-cell">Поддержка TypeScript</th>
-                        <td class="table-body-cell"><span class="rating-good">Нативная</span></td>
-                        <td class="table-body-cell"><span class="rating-average">Через внешние инструменты</span></td>
-                        <td class="table-body-cell"><span class="rating-poor">Нет</span></td>
-                    </tr>
-                    <tr class="table-row">
-                        <th scope="row" class="table-header-cell">PWA возможности</th>
-                        <td class="table-body-cell"><span class="rating-good">Отличные</span></td>
-                        <td class="table-body-cell"><span class="rating-average">Ограниченные</span></td>
-                        <td class="table-body-cell"><span class="rating-average">Ограниченные</span></td>
-                    </tr>
-                    <tr class="table-row">
-                        <th scope="row" class="table-header-cell">Количество плагинов</th>
-                        <td class="table-body-cell"><span class="rating-good">2000+</span></td>
-                        <td class="table-body-cell"><span class="rating-average">300+</span></td>
-                        <td class="table-body-cell"><span class="rating-good">1000+</span></td>
-                    </tr>
-                    <tr class="table-row">
-                        <th scope="row" class="table-header-cell">Активность сообщества</th>
-                        <td class="table-body-cell"><span class="rating-stars">★★★★★</span></td>
-                        <td class="table-body-cell"><span class="rating-stars">★★★★☆</span></td>
-                        <td class="table-body-cell"><span class="rating-stars">★★★★★</span></td>
-                    </tr>
-                    <tr class="table-row">
-                        <th scope="row" class="table-header-cell">Рекомендуемый хостинг</th>
-                        <td class="table-body-cell">Netlify, Vercel</td>
-                        <td class="table-body-cell">Любой статический хостинг</td>
-                        <td class="table-body-cell"><span class="rating-good">GitHub Pages</span></td>
-                    </tr>
-                    <tr class="table-row">
-                        <th scope="row" class="table-header-cell">Стоимость хостинга</th>
-                        <td class="table-body-cell"><span class="rating-average">$$</span> (часто c платными функциями)</td>
-                        <td class="table-body-cell"><span class="rating-good">$</span> (очень дешевый)</td>
-                        <td class="table-body-cell"><span class="rating-good">$</span> (часто бесплатный)</td>
-                    </tr>
-                    <tr class="table-row">
-                        <th scope="row" class="table-header-cell">Идеальные сценарии использования</th>
-                        <td class="table-body-cell">Корпоративные сайты, веб-приложения, интернет-магазины</td>
-                        <td class="table-body-cell">Большие блоги, документация, новостные сайты</td>
-                        <td class="table-body-cell">Личные блоги, сайты-портфолио, проектная документация</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div class="note-box">
-            <p><strong>Примечание:</strong> Ознакомьтесь с подробным сравнением по данной <a href="./comparison.html">ссылке</a></p>
-        </div> 
-        </div>
+
+        <!-- Визуальное сравнение -->
+        <section class="card">
+            <h2 class="main-title text-center mb-2">Сравнение фреймворков</h2>
+            <h3 class="subtitle text-center mb-6">Ключевые показатели в визуальном представлении</h3>
+
+            <!-- Легенда -->
+            <div class="bg-white rounded-lg p-4 mb-6 border">
+                <h3 class="font-bold text-gray-800 mb-3">Легенда индикаторов</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="flex items-center">
+                        <div class="w-4 h-4 bg-purple-500 rounded mr-3"></div>
+                        <span class="font-medium">Gatsby</span>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="w-4 h-4 bg-green-500 rounded mr-3"></div>
+                        <span class="font-medium">Hugo</span>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="w-4 h-4 bg-amber-500 rounded mr-3"></div>
+                        <span class="font-medium">Jekyll</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Индикаторы сравнения -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Колонка 1 -->
+                <div class="space-y-6">
+                    <!-- Скорость сборки -->
+                    <div>
+                        <h3 class="font-semibold text-gray-700 mb-4">Скорость сборки</h3>
+                        <div class="space-y-3">
+                            <div class="comparison-row">
+                                <span class="framework-label text-purple-600">Gatsby</span>
+                                <div class="progress-wrapper">
+                                    <div class="progress-container">
+                                        <div class="progress-bar gatsby-bar" style="width: 40%"></div>
+                                    </div>
+                                </div>
+                                <span class="progress-value">40%</span>
+                            </div>
+                            <div class="comparison-row">
+                                <span class="framework-label text-green-600">Hugo</span>
+                                <div class="progress-wrapper">
+                                    <div class="progress-container">
+                                        <div class="progress-bar hugo-bar" style="width: 95%"></div>
+                                    </div>
+                                </div>
+                                <span class="progress-value">95%</span>
+                            </div>
+                            <div class="comparison-row">
+                                <span class="framework-label text-amber-600">Jekyll</span>
+                                <div class="progress-wrapper">
+                                    <div class="progress-container">
+                                        <div class="progress-bar jekyll-bar" style="width: 25%"></div>
+                                    </div>
+                                </div>
+                                <span class="progress-value">25%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Простота изучения -->
+                    <div>
+                        <h3 class="font-semibold text-gray-700 mb-4">Простота изучения</h3>
+                        <div class="space-y-3">
+                            <div class="comparison-row">
+                                <span class="framework-label text-purple-600">Gatsby</span>
+                                <div class="progress-wrapper">
+                                    <div class="progress-container">
+                                        <div class="progress-bar gatsby-bar" style="width: 30%"></div>
+                                    </div>
+                                </div>
+                                <span class="progress-value">30%</span>
+                            </div>
+                            <div class="comparison-row">
+                                <span class="framework-label text-green-600">Hugo</span>
+                                <div class="progress-wrapper">
+                                    <div class="progress-container">
+                                        <div class="progress-bar hugo-bar" style="width: 65%"></div>
+                                    </div>
+                                </div>
+                                <span class="progress-value">65%</span>
+                            </div>
+                            <div class="comparison-row">
+                                <span class="framework-label text-amber-600">Jekyll</span>
+                                <div class="progress-wrapper">
+                                    <div class="progress-container">
+                                        <div class="progress-bar jekyll-bar" style="width: 85%"></div>
+                                    </div>
+                                </div>
+                                <span class="progress-value">85%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Колонка 2 -->
+                <div class="space-y-6">
+                    <!-- Гибкость -->
+                    <div>
+                        <h3 class="font-semibold text-gray-700 mb-4">Гибкость и возможности</h3>
+                        <div class="space-y-3">
+                            <div class="comparison-row">
+                                <span class="framework-label text-purple-600">Gatsby</span>
+                                <div class="progress-wrapper">
+                                    <div class="progress-container">
+                                        <div class="progress-bar gatsby-bar" style="width: 95%"></div>
+                                    </div>
+                                </div>
+                                <span class="progress-value">95%</span>
+                            </div>
+                            <div class="comparison-row">
+                                <span class="framework-label text-green-600">Hugo</span>
+                                <div class="progress-wrapper">
+                                    <div class="progress-container">
+                                        <div class="progress-bar hugo-bar" style="width: 75%"></div>
+                                    </div>
+                                </div>
+                                <span class="progress-value">75%</span>
+                            </div>
+                            <div class="comparison-row">
+                                <span class="framework-label text-amber-600">Jekyll</span>
+                                <div class="progress-wrapper">
+                                    <div class="progress-container">
+                                        <div class="progress-bar jekyll-bar" style="width: 60%"></div>
+                                    </div>
+                                </div>
+                                <span class="progress-value">60%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Экосистема -->
+                    <div>
+                        <h3 class="font-semibold text-gray-700 mb-4">Экосистема</h3>
+                        <div class="space-y-3">
+                            <div class="comparison-row">
+                                <span class="framework-label text-purple-600">Gatsby</span>
+                                <div class="progress-wrapper">
+                                    <div class="progress-container">
+                                        <div class="progress-bar gatsby-bar" style="width: 95%"></div>
+                                    </div>
+                                </div>
+                                <span class="progress-value">95%</span>
+                            </div>
+                            <div class="comparison-row">
+                                <span class="framework-label text-green-600">Hugo</span>
+                                <div class="progress-wrapper">
+                                    <div class="progress-container">
+                                        <div class="progress-bar hugo-bar" style="width: 65%"></div>
+                                    </div>
+                                </div>
+                                <span class="progress-value">65%</span>
+                            </div>
+                            <div class="comparison-row">
+                                <span class="framework-label text-amber-600">Jekyll</span>
+                                <div class="progress-wrapper">
+                                    <div class="progress-container">
+                                        <div class="progress-bar jekyll-bar" style="width: 80%"></div>
+                                    </div>
+                                </div>
+                                <span class="progress-value">80%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Призыв к действию -->
+            <div class="mt-6 p-4 bg-blue-50 border-l-4 border-blue-500 rounded">
+                <p class="text-blue-700 text-sm">
+                    <strong>Хотите больше деталей?</strong> Ознакомьтесь с 
+                    <a href="./Pages/comparison.html" class="text-blue-600 font-semibold hover:text-blue-800 underline">подробным сравнением</a> 
+                    для полного анализа всех характеристик.
+                </p>
+            </div>
         </section>
-        
+
+        <!-- Быстрый выбор -->
+        <section class="card">
+            <h2 class="main-title text-center mb-6">Какой фреймворк выбрать?</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="text-center p-4">
+                    <div class="logo-container mx-auto mb-3 w-16 h-16">
+                        <img src="./src/images/gatsby_logo.jpeg" alt="Gatsby" class="framework-logo w-full h-full">
+                    </div>
+                    <h3 class="font-bold text-purple-800 mb-2">Выберите Gatsby</h3>
+                    <p class="text-sm text-gray-600">Если нужны динамические возможности SPA и богатая экосистема</p>
+                </div>
+                <div class="text-center p-4">
+                    <div class="logo-container mx-auto mb-3 w-16 h-16">
+                        <img src="./src/images/hugo_logo.jpg" alt="Hugo" class="framework-logo w-full h-full">
+                    </div>
+                    <h3 class="font-bold text-green-800 mb-2">Выберите Hugo</h3>
+                    <p class="text-sm text-gray-600">Если важна максимальная скорость сборки и производительность</p>
+                </div>
+                <div class="text-center p-4">
+                    <div class="logo-container mx-auto mb-3 w-16 h-16">
+                        <img src="./src/images/jekyll_logo.jpg" alt="Jekyll" class="framework-logo w-full h-full">
+                    </div>
+                    <h3 class="font-bold text-amber-800 mb-2">Выберите Jekyll</h3>
+                    <p class="text-sm text-gray-600">Если нужна простота и быстрый старт с минимальными настройками</p>
+                </div>
+            </div>
+        </section>
     </main>
+
     <footer class="nav">
-        <p class="nav-a">&copy Vlad </p>
-        <p class="nav-a">Tarakanov</p>
+        <p class="nav-a">&copy Vlad Tarakanov</p>
     </footer>
 
     <div class="sidebar" id="sidebar">

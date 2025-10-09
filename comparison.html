@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Триада Статики</title>
+    <link rel="stylesheet" href="../uno.css">
+    <style>
+        .progress-container {
+            width: 100%;
+            background-color: #e5e7eb;
+            border-radius: 4px;
+            overflow: hidden;
+            height: 20px;
+        }
+        .progress-bar {
+            height: 100%;
+            border-radius: 4px;
+            transition: width 0.3s ease;
+        }
+        .gatsby-bar { background-color: #8b5cf6; }
+        .hugo-bar { background-color: #10b981; }
+        .jekyll-bar { background-color: #f59e0b; }
+        
+        .comparison-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+            gap: 12px;
+        }
+        .framework-label {
+            min-width: 80px;
+            font-weight: 600;
+            font-size: 0.875rem;
+        }
+        .progress-wrapper {
+            flex: 1;
+        }
+        .progress-value {
+            min-width: 40px;
+            text-align: right;
+            font-weight: 600;
+            font-size: 0.875rem;
+        }
+        
+        /* Мобильная адаптация */
+        @media (max-width: 768px) {
+            .comparison-row {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 6px;
+            }
+            .framework-label {
+                min-width: auto;
+            }
+            .progress-value {
+                text-align: left;
+            }
+        }
+    </style>
+</head>
+
+<body class="body-def reset-spacing">
+
+    <header class="btn-primary flex-center p-4">
+        <h1 class="text-gradient">Фреймворки для статических сайтов</h1>
+    </header>
+
+    <nav class="nav space-y-3">
+        <button class="nav-a hover:bg-gray-800 hover:shadow-lg" id="menuToggle">☰ Меню</button>
+        <a href="../index.html" class="nav-a hover:bg-gray-800 hover:shadow-lg">Главная</a>
+        <a href="" class="nav-a hover:bg-gray-800 hover:shadow-lg">Контакты</a>
+    </nav>
+
+    <main class="main-def">
+        <div>
+        <section class="card">
+            <h1 class="main-title">Gatsby vs Hugo vs Jekyll: Визуальное сравнение</h1>
+            <h3 class="subtitle">Сравнение трех лидеров в генерации статических сайтов с помощью индикаторов прогресса</h3>
+            <h3 class="subtitle">Индикаторы заполненности показывают относительную силу каждого фреймворка в различных категориях. 
+                Более длинная полоса означает лучшие показатели в данной характеристике.</h3>
+        </section>
+        </div>
+
+        <!-- Основные характеристики -->
+        <section class="card">
+            <h2 class="text-xl font-bold mb-6">Основные характеристики</h2>
+            
+            <div class="space-y-6">
+                <!-- Скорость сборки -->
+                <div>
+                    <h3 class="font-semibold text-gray-700 mb-4">Скорость сборки (1000 страниц)</h3>
+                    <div class="space-y-3">
+                        <div class="comparison-row">
+                            <span class="framework-label text-purple-600">Gatsby</span>
+                            <div class="progress-wrapper">
+                                <div class="progress-container">
+                                    <div class="progress-bar gatsby-bar" style="width: 40%"></div>
+                                </div>
+                            </div>
+                            <span class="progress-value">40%</span>
+                        </div>
+                        <div class="comparison-row">
+                            <span class="framework-label text-green-600">Hugo</span>
+                            <div class="progress-wrapper">
+                                <div class="progress-container">
+                                    <div class="progress-bar hugo-bar" style="width: 95%"></div>
+                                </div>
+                            </div>
+                            <span class="progress-value">95%</span>
+                        </div>
+                        <div class="comparison-row">
+                            <span class="framework-label text-amber-600">Jekyll</span>
+                            <div class="progress-wrapper">
+                                <div class="progress-container">
+                                    <div class="progress-bar jekyll-bar" style="width: 25%"></div>
+                                </div>
+                            </div>
+                            <span class="progress-value">25%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Порог входа -->
+                <div>
+                    <h3 class="font-semibold text-gray-700 mb-4">Простота изучения</h3>
+                    <div class="space-y-3">
+                        <div class="comparison-row">
+                            <span class="framework-label text-purple-600">Gatsby</span>
+                            <div class="progress-wrapper">
+                                <div class="progress-container">
+                                    <div class="progress-bar gatsby-bar" style="width: 30%"></div>
+                                </div>
+                            </div>
+                            <span class="progress-value">30%</span>
+                        </div>
+                        <div class="comparison-row">
+                            <span class="framework-label text-green-600">Hugo</span>
+                            <div class="progress-wrapper">
+                                <div class="progress-container">
+                                    <div class="progress-bar hugo-bar" style="width: 65%"></div>
+                                </div>
+                            </div>
+                            <span class="progress-value">65%</span>
+                        </div>
+                        <div class="comparison-row">
+                            <span class="framework-label text-amber-600">Jekyll</span>
+                            <div class="progress-wrapper">
+                                <div class="progress-container">
+                                    <div class="progress-bar jekyll-bar" style="width: 85%"></div>
+                                </div>
+                            </div>
+                            <span class="progress-value">85%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Гибкость -->
+                <div>
+                    <h3 class="font-semibold text-gray-700 mb-4">Гибкость и возможности</h3>
+                    <div class="space-y-3">
+                        <div class="comparison-row">
+                            <span class="framework-label text-purple-600">Gatsby</span>
+                            <div class="progress-wrapper">
+                                <div class="progress-container">
+                                    <div class="progress-bar gatsby-bar" style="width: 95%"></div>
+                                </div>
+                            </div>
+                            <span class="progress-value">95%</span>
+                        </div>
+                        <div class="comparison-row">
+                            <span class="framework-label text-green-600">Hugo</span>
+                            <div class="progress-wrapper">
+                                <div class="progress-container">
+                                    <div class="progress-bar hugo-bar" style="width: 75%"></div>
+                                </div>
+                            </div>
+                            <span class="progress-value">75%</span>
+                        </div>
+                        <div class="comparison-row">
+                            <span class="framework-label text-amber-600">Jekyll</span>
+                            <div class="progress-wrapper">
+                                <div class="progress-container">
+                                    <div class="progress-bar jekyll-bar" style="width: 60%"></div>
+                                </div>
+                            </div>
+                            <span class="progress-value">60%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Технические возможности -->
+        <section class="card">
+            <h2 class="text-xl font-bold mb-6">Технические возможности</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Количество плагинов -->
+                <div>
+                    <h3 class="font-semibold text-gray-700 mb-4">Количество плагинов</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="comparison-row">
+                                <span class="framework-label text-purple-600">Gatsby</span>
+                                <div class="progress-wrapper">
+                                    <div class="progress-container">
+                                        <div class="progress-bar gatsby-bar" style="width: 95%"></div>
+                                    </div>
+                                </div>
+                                <span class="progress-value">95%</span>
+                            </div>
+                            <div class="text-sm text-gray-600 text-center">2000+</div>
+                        </div>
+                        <div>
+                            <div class="comparison-row">
+                                <span class="framework-label text-green-600">Hugo</span>
+                                <div class="progress-wrapper">
+                                    <div class="progress-container">
+                                        <div class="progress-bar hugo-bar" style="width: 30%"></div>
+                                    </div>
+                                </div>
+                                <span class="progress-value">30%</span>
+                            </div>
+                            <div class="text-sm text-gray-600 text-center">300+</div>
+                        </div>
+                        <div>
+                            <div class="comparison-row">
+                                <span class="framework-label text-amber-600">Jekyll</span>
+                                <div class="progress-wrapper">
+                                    <div class="progress-container">
+                                        <div class="progress-bar jekyll-bar" style="width: 60%"></div>
+                                    </div>
+                                </div>
+                                <span class="progress-value">60%</span>
+                            </div>
+                            <div class="text-sm text-gray-600 text-center">1000+</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Поддержка TypeScript -->
+                <div>
+                    <h3 class="font-semibold text-gray-700 mb-4">Поддержка TypeScript</h3>
+                    <div class="space-y-4">
+                        <div class="comparison-row">
+                            <span class="framework-label text-purple-600">Gatsby</span>
+                            <div class="progress-wrapper">
+                                <div class="progress-container">
+                                    <div class="progress-bar gatsby-bar" style="width: 100%"></div>
+                                </div>
+                            </div>
+                            <span class="progress-value">100%</span>
+                        </div>
+                        <div class="comparison-row">
+                            <span class="framework-label text-green-600">Hugo</span>
+                            <div class="progress-wrapper">
+                                <div class="progress-container">
+                                    <div class="progress-bar hugo-bar" style="width: 60%"></div>
+                                </div>
+                            </div>
+                            <span class="progress-value">60%</span>
+                        </div>
+                        <div class="comparison-row">
+                            <span class="framework-label text-amber-600">Jekyll</span>
+                            <div class="progress-wrapper">
+                                <div class="progress-container">
+                                    <div class="progress-bar jekyll-bar" style="width: 10%"></div>
+                                </div>
+                            </div>
+                            <span class="progress-value">10%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PWA возможности -->
+                <div>
+                    <h3 class="font-semibold text-gray-700 mb-4">PWA возможности</h3>
+                    <div class="space-y-4">
+                        <div class="comparison-row">
+                            <span class="framework-label text-purple-600">Gatsby</span>
+                            <div class="progress-wrapper">
+                                <div class="progress-container">
+                                    <div class="progress-bar gatsby-bar" style="width: 90%"></div>
+                                </div>
+                            </div>
+                            <span class="progress-value">90%</span>
+                        </div>
+                        <div class="comparison-row">
+                            <span class="framework-label text-green-600">Hugo</span>
+                            <div class="progress-wrapper">
+                                <div class="progress-container">
+                                    <div class="progress-bar hugo-bar" style="width: 40%"></div>
+                                </div>
+                            </div>
+                            <span class="progress-value">40%</span>
+                        </div>
+                        <div class="comparison-row">
+                            <span class="framework-label text-amber-600">Jekyll</span>
+                            <div class="progress-wrapper">
+                                <div class="progress-container">
+                                    <div class="progress-bar jekyll-bar" style="width: 40%"></div>
+                                </div>
+                            </div>
+                            <span class="progress-value">40%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Активность сообщества -->
+                <div>
+                    <h3 class="font-semibold text-gray-700 mb-4">Активность сообщества</h3>
+                    <div class="space-y-4">
+                        <div class="comparison-row">
+                            <span class="framework-label text-purple-600">Gatsby</span>
+                            <div class="progress-wrapper">
+                                <div class="progress-container">
+                                    <div class="progress-bar gatsby-bar" style="width: 95%"></div>
+                                </div>
+                            </div>
+                            <span class="progress-value">95%</span>
+                        </div>
+                        <div class="comparison-row">
+                            <span class="framework-label text-green-600">Hugo</span>
+                            <div class="progress-wrapper">
+                                <div class="progress-container">
+                                    <div class="progress-bar hugo-bar" style="width: 80%"></div>
+                                </div>
+                            </div>
+                            <span class="progress-value">80%</span>
+                        </div>
+                        <div class="comparison-row">
+                            <span class="framework-label text-amber-600">Jekyll</span>
+                            <div class="progress-wrapper">
+                                <div class="progress-container">
+                                    <div class="progress-bar jekyll-bar" style="width: 95%"></div>
+                                </div>
+                            </div>
+                            <span class="progress-value">95%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Сравнение по категориям -->
+        <section class="card">
+            <h2 class="text-xl font-bold mb-6">Сравнение по ключевым параметрам</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Gatsby -->
+                <div class="bg-purple-50 rounded-lg p-5">
+                    <h3 class="text-lg font-bold text-purple-800 mb-4 text-center">Gatsby</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm">Производительность</span>
+                                <span class="text-sm font-bold">85%</span>
+                            </div>
+                            <div class="progress-container">
+                                <div class="progress-bar gatsby-bar" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm">Экосистема</span>
+                                <span class="text-sm font-bold">95%</span>
+                            </div>
+                            <div class="progress-container">
+                                <div class="progress-bar gatsby-bar" style="width: 95%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm">Простота</span>
+                                <span class="text-sm font-bold">30%</span>
+                            </div>
+                            <div class="progress-container">
+                                <div class="progress-bar gatsby-bar" style="width: 30%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm">Гибкость</span>
+                                <span class="text-sm font-bold">90%</span>
+                            </div>
+                            <div class="progress-container">
+                                <div class="progress-bar gatsby-bar" style="width: 90%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hugo -->
+                <div class="bg-green-50 rounded-lg p-5">
+                    <h3 class="text-lg font-bold text-green-800 mb-4 text-center">Hugo</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm">Производительность</span>
+                                <span class="text-sm font-bold">98%</span>
+                            </div>
+                            <div class="progress-container">
+                                <div class="progress-bar hugo-bar" style="width: 98%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm">Экосистема</span>
+                                <span class="text-sm font-bold">65%</span>
+                            </div>
+                            <div class="progress-container">
+                                <div class="progress-bar hugo-bar" style="width: 65%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm">Простота</span>
+                                <span class="text-sm font-bold">70%</span>
+                            </div>
+                            <div class="progress-container">
+                                <div class="progress-bar hugo-bar" style="width: 70%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm">Гибкость</span>
+                                <span class="text-sm font-bold">75%</span>
+                            </div>
+                            <div class="progress-container">
+                                <div class="progress-bar hugo-bar" style="width: 75%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Jekyll -->
+                <div class="bg-amber-50 rounded-lg p-5">
+                    <h3 class="text-lg font-bold text-amber-800 mb-4 text-center">Jekyll</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm">Производительность</span>
+                                <span class="text-sm font-bold">60%</span>
+                            </div>
+                            <div class="progress-container">
+                                <div class="progress-bar jekyll-bar" style="width: 60%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm">Экосистема</span>
+                                <span class="text-sm font-bold">80%</span>
+                            </div>
+                            <div class="progress-container">
+                                <div class="progress-bar jekyll-bar" style="width: 80%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm">Простота</span>
+                                <span class="text-sm font-bold">90%</span>
+                            </div>
+                            <div class="progress-container">
+                                <div class="progress-bar jekyll-bar" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm">Гибкость</span>
+                                <span class="text-sm font-bold">50%</span>
+                            </div>
+                            <div class="progress-container">
+                                <div class="progress-bar jekyll-bar" style="width: 50%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Заключение -->
+        <section class="card bg-blue-50 border-l-4 border-blue-500">
+            <h3 class="font-bold text-blue-800 text-lg mb-2">Как читать эти индикаторы?</h3>
+            <p class="text-blue-700 text-sm">
+                Индикаторы заполненности показывают относительную силу каждого фреймворка в различных категориях. 
+                Более длинная полоса означает лучшие показатели в данной характеристике. 
+                Процентные значения помогают точно оценить различия между фреймворками.
+            </p>
+        </section>
+    </main>
+
+    <footer class="nav">
+        <p class="nav-a">&copy Vlad </p>
+        <p class="nav-a">Tarakanov</p>
+    </footer>
+
+    <div class="sidebar" id="sidebar">
+        <button class="btn-close" id="closeBtn">×</button>
+        <nav class="sidebar-nav">
+            <h2>Меню</h2>
+            <ul class="space-y-4">
+                <li><a href="../index.html" class="nav-a hover:bg-gray-800 hover:shadow-lg">Главная</a></li>
+                <li><a href="../Pages/comparison.html" class="nav-a hover:bg-gray-800 hover:shadow-lg">Детальное сравнение</a></li>
+                <li><a href="../Pages/intro-to-statics.html" class="nav-a hover:bg-gray-800 hover:shadow-lg">Введение в статику</a></li>
+                <li><a href="../Pages/Gatsby.html" class="nav-a hover:bg-gray-800 hover:shadow-lg">Gatsby</a></li>
+                <li><a href="../Pages/Hugo.html" class="nav-a hover:bg-gray-800 hover:shadow-lg">Hugo</a></li>
+                <li><a href="../Pages/Jekyll.html" class="nav-a hover:bg-gray-800 hover:shadow-lg">Jekyll</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="overlay" id="overlay"></div>
+
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const sidebar = document.getElementById('sidebar');
+        const closeBtn = document.getElementById('closeBtn');
+        const overlay = document.getElementById('overlay');
+
+        function openSidebar() {
+            sidebar.classList.add('sidebar-open');
+            overlay.classList.add('overlay-active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeSidebar() {
+            sidebar.classList.remove('sidebar-open');
+            overlay.classList.remove('overlay-active');
+            document.body.style.overflow = '';
+        }
+
+        menuToggle.addEventListener('click', openSidebar);
+        closeBtn.addEventListener('click', closeSidebar);
+        overlay.addEventListener('click', closeSidebar);
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeSidebar();
+        });
+    </script>
+    
+</body>
+</html>
