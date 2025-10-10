@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Триада Статики</title>
+    <link rel="stylesheet" href="../uno.css">
+</head>
+
+<body class="body-def reset-spacing">
+
+    <header class="btn-primary flex-center p-4">
+        <h1 class="text-gradient">Фреймворки для статических сайтов</h1>
+    </header>
+
+    <nav class="nav space-y-3">
+        <button class="nav-a hover:bg-gray-800 hover:shadow-lg" id="menuToggle">☰ Меню</button>
+        <a href="../index.html" class="nav-a hover:bg-gray-800 hover:shadow-lg">Главная</a>
+        <a href="" class="nav-a hover:bg-gray-800 hover:shadow-lg">Контакты</a>
+    </nav>
+
+    <main class="main-def">
+        <div>
+        <section class="card">
+            <h1 class="main-title">Gatsby vs Hugo vs Jekyll: Детальное сравнение</h1>
+            <h3 class="subtitle">Объективный анализ трех лидеров в генерации статических сайтов. Найдите идеальное решение для вашего проекта.</h3>
+            <h3 class="subtitle">Выбор между Gatsby, Hugo и Jekyll — это не вопрос "что лучше", а "что лучше для ваших конкретных задач". 
+                Это сравнение поможет вам принять взвешенное решение на основе технических характеристик, производительности и сценариев использования.</h3>
+        </section>
+        </div>
+
+        <div class="flex-row items-center gap-4 md:flex md:items-center">
+        <section class="card flex-center">
+           <div class="table-container">
+            <table>
+                <caption class="btn-primary">
+                    <h1 class="text-xl font-bold">
+                        Основные характеристики
+                    </h1>
+                </caption>
+                <thead>
+                    <tr class="table-header">
+                        <th scope="col" class="table-header-cell">Критерий</th>
+                        <th scope="col" class="table-header-cell">Gatsby</th>
+                        <th scope="col" class="table-header-cell">Hugo</th>
+                        <th scope="col" class="table-header-cell">Jekyll</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="table-row">
+                        <th scope="row" class="table-header-cell">Технологический стек</th>
+                        <td class="table-body-cell">React, GraphQL, Node.js</td>
+                        <td class="table-body-cell">Go (Golang)</td>
+                        <td class="table-body-cell">Ruby, Liquid</td>
+                    </tr>
+                    <tr class="table-row">
+                        <th scope="row" class="table-header-cell">Архитектура</th>
+                        <td class="table-body-cell">Компонентная (React)</span></td>
+                        <td class="table-body-cell">Шаблоны и партиалы</span></td>
+                        <td class="table-body-cell">Layouts и includes</span></td>
+                    </tr>
+                    <tr class="table-row">
+                        <th scope="row" class="table-header-cell">Порог входа</th>
+                        <td class="table-body-cell"><span class="rating-poor">Высокий</span></td>
+                        <td class="table-body-cell"><span class="rating-average">Средний</span></td>
+                        <td class="table-body-cell"><span class="rating-good">Низкий</span></td>
+                    </tr>
+                    <tr class="table-row">
+                        <th scope="row" class="table-header-cell">Скорость сборки (1000 страниц)</th>
+                        <td class="table-body-cell"><span class="rating-average">30-60 секунд</span></td>
+                        <td class="table-body-cell"><span class="rating-good">2-5 секунд</span></td>
+                        <td class="table-body-cell"><span class="rating-poor">60-120 секунд</span></td>
+                    </tr>
+                    <tr class="table-row">
+                        <th scope="row" class="table-header-cell">Требуемые предварительные знания</th>
+                        <td class="table-body-cell">JavaScript, React</td>
+                        <td class="table-body-cell">Go templates, Markdown</td>
+                        <td class="table-body-cell">Ruby, Liquid, Markdown</td>
+                    </tr>
+                    <tr class="table-row">
+                        <th scope="row" class="table-header-cell">Установка</th>
+                        <td class="table-body-cell">npm install -g gatsby-cli</td>
+                        <td class="table-body-cell">Скачать бинарный файл</td>
+                        <td class="table-body-cell">gem install jekyll bundler</td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+            <div class="table-container">
+            <table>
+                <caption class="btn-primary">
+                    <h1 class="text-xl font-bold">
+                        Возможности и функциональность
+                    </h1>
+                </caption>
+                <thead>
+                    <tr class="table-header">
+                        <th scope="col" class="table-header-cell">Критерий</th>
+                        <th scope="col" class="table-header-cell">Gatsby</th>
+                        <th scope="col" class="table-header-cell">Hugo</th>
+                        <th scope="col" class="table-header-cell">Jekyll</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="table-row">
+                        <th scope="row" class="table-header-cell">Управление данными</th>
+                        <td class="table-body-cell">GraphQL, различные источники</td>
+                        <td class="table-body-cell">Фронт-маatter, JSON, CSV</td>
+                        <td class="table-body-cell">Фронт-маatter, данные из YAML</td>
+                    </tr>
+                    <tr class="table-row">
+                        <th scope="row" class="table-header-cell">Система шаблонов</th>
+                        <td class="table-body-cell">JSX компоненты</span></td>
+                        <td class="table-body-cell">Go templates</span></td>
+                        <td class="table-body-cell">Liquid templates</span></td>
+                    </tr>
+                    <tr class="table-row">
+                        <th scope="row" class="table-header-cell">Обработка изображений</th>
+                        <td class="table-body-cell"><span class="rating-good"> Плагины для оптимизации</span></td>
+                        <td class="table-body-cell"><span class="rating-good">Встроенные функции</span></td>
+                        <td class="table-body-cell"><span class="rating-average">Требуются плагины</span></td>
+                    </tr>
+                    <tr class="table-row">
+                        <th scope="row" class="table-header-cell">Поддержка TypeScript</th>
+                        <td class="table-body-cell"><span class="rating-good">Нативная</span></td>
+                        <td class="table-body-cell"><span class="rating-average">Через внешние инструменты</span></td>
+                        <td class="table-body-cell"><span class="rating-poor">Нет</span></td>
+                    </tr>
+                    <tr class="table-row">
+                        <th scope="row" class="table-header-cell">PWA возможности</th>
+                        <td class="table-body-cell"><span class="rating-good">Отличные</span></td>
+                        <td class="table-body-cell"><span class="rating-average">Ограниченные</span></td>
+                        <td class="table-body-cell"><span class="rating-average">Ограниченные</span></td>
+                    </tr>
+                    <tr class="table-row">
+                        <th scope="row" class="table-header-cell">Поддержка Sass/Less</th>
+                        <td class="table-body-cell"><span class="rating-good">Через плагины</span></td>
+                        <td class="table-body-cell"><span class="rating-good">Встроенная</span></td>
+                        <td class="table-body-cell"><span class="rating-good">Нативная</span></td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+        </section>
+        </div>
+        <div class="flex-row items-center gap-4 md:flex md:items-center">
+        <section class="card flex-center">
+           <div class="table-container">
+            <table>
+                <caption class="btn-primary">
+                    <h1 class="text-xl font-bold">
+                        Экосистема и сообщество
+                    </h1>
+                </caption>
+                <thead>
+                    <tr class="table-header">
+                        <th scope="col" class="table-header-cell">Критерий</th>
+                        <th scope="col" class="table-header-cell">Gatsby</th>
+                        <th scope="col" class="table-header-cell">Hugo</th>
+                        <th scope="col" class="table-header-cell">Jekyll</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="table-row">
+                        <th scope="row" class="table-header-cell">Количество плагинов</th>
+                        <td class="table-body-cell">2000+</td>
+                        <td class="table-body-cell">300+</td>
+                        <td class="table-body-cell">1000+</td>
+                    </tr>
+                    
+                    <tr class="table-row">
+                        <th scope="row" class="table-header-cell">Качество документации</th>
+                        <td class="table-body-cell"><span class="rating-stars">★★★★★</span></td>
+                        <td class="table-body-cell"><span class="rating-stars">★★★★☆</span></td>
+                        <td class="table-body-cell"><span class="rating-stars">★★★★★</span></td>
+                    </tr>
+                    <tr class="table-row">
+                        <th scope="row" class="table-header-cell">Активность сообщества</th>
+                        <td class="table-body-cell"><span class="rating-stars">★★★★★</span></td>
+                        <td class="table-body-cell"><span class="rating-stars">★★★★☆</span></td>
+                        <td class="table-body-cell"><span class="rating-stars">★★★★★</span></td>
+                    </tr>
+                    <tr class="table-row">
+                        <th scope="row" class="table-header-cell">Частота обновлений</th>
+                        <td class="table-body-cell"><span class="rating-good">Высокая</span></td>
+                        <td class="table-body-cell"><span class="rating-average">Средняя</span></td>
+                        <td class="table-body-cell"><span class="rating-poor">Низкая</span></td>
+                    </tr>
+                    <tr class="table-row">
+                        <th scope="row" class="table-header-cell">Поддержка тем</th>
+                        <td class="table-body-cell"><span class="rating-good">Много готовых</span></td>
+                        <td class="table-body-cell"><span class="rating-good">Умеренное количество</span></td>
+                        <td class="table-body-cell"><span class="rating-good">Огромный выбор</span></td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+            <div class="table-container">
+            <table>
+                <caption class="btn-primary">
+                    <h1 class="text-xl font-bold">
+                        Производительность
+                    </h1>
+                </caption>
+                <thead>
+                    <tr class="table-header">
+                        <th scope="col" class="table-header-cell">Критерий</th>
+                        <th scope="col" class="table-header-cell">Gatsby</th>
+                        <th scope="col" class="table-header-cell">Hugo</th>
+                        <th scope="col" class="table-header-cell">Jekyll</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="table-row">
+                        <th scope="row" class="table-header-cell">Скорость сборки</th>
+                        <td class="table-body-cell"><span class="rating-stars">★★★☆☆</span></td>
+                        <td class="table-body-cell"><span class="rating-stars">★★★★★</span></td>
+                        <td class="table-body-cell"><span class="rating-stars">★★☆☆☆</span></td>
+                    </tr>
+                    <tr class="table-row">
+                        <th scope="row" class="table-header-cell">Размер бандла</th>
+                        <td class="table-body-cell">Средний-большой</td>
+                        <td class="table-body-cell">Минимальный</td>
+                        <td class="table-body-cell">Средний</td>
+                    </tr>
+                    <tr class="table-row">
+                        <th scope="row" class="table-header-cell">Время загрузки в браузере</th>
+                        <td class="table-body-cell"><span class="rating-good">Быстрое</span></td>
+                        <td class="table-body-cell"><span class="rating-good">Очень быстрое</span></td>
+                        <td class="table-body-cell"><span class="rating-good">Быстрое</span></td>
+                    </tr>
+                    <tr class="table-row">
+                        <th scope="row" class="table-header-cell">SEO возможности</th>
+                        <td class="table-body-cell"><span class="rating-good">Отличные</span></td>
+                        <td class="table-body-cell"><span class="rating-good">Отличные</span></td>
+                        <td class="table-body-cell"><span class="rating-good">Хорошие</span></td>
+                    </tr>
+                    <tr class="table-row">
+                        <th scope="row" class="table-header-cell">Кэширование</th>
+                        <td class="table-body-cell"><span class="rating-good">Интеллектуальное</span></td>
+                        <td class="table-body-cell"><span class="rating-good">Статическое</span></td>
+                        <td class="table-body-cell"><span class="rating-good">Базовое</span></td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+            </section>
+        </div>
+        
+    </main>
+
+    <footer class="nav">
+        <p class="nav-a">&copy Vlad </p>
+        <p class="nav-a">Tarakanov</p>
+    </footer>
+
+    <div class="sidebar" id="sidebar">
+        <button class="btn-close" id="closeBtn">×</button>
+        <nav class="sidebar-nav">
+            <h2>Меню</h2>
+            <ul class="space-y-4">
+                <li><a href="../index.html" class="nav-a hover:bg-gray-800 hover:shadow-lg">Главная</a></li>
+                <li><a href="../Pages/comparison.html" class="nav-a hover:bg-gray-800 hover:shadow-lg">Детальное сравнение</a></li>
+                <li><a href="../Pages/intro-to-statics.html" class="nav-a hover:bg-gray-800 hover:shadow-lg">Введение в статику</a></li>
+                <li><a href="../Pages/Gatsby.html" class="nav-a hover:bg-gray-800 hover:shadow-lg">Gatsby</a></li>
+                <li><a href="../Pages/Hugo.html" class="nav-a hover:bg-gray-800 hover:shadow-lg">Hugo</a></li>
+                <li><a href="../Pages/Jekyll.html" class="nav-a hover:bg-gray-800 hover:shadow-lg">Jekyll</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="overlay" id="overlay"></div>
+
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const sidebar = document.getElementById('sidebar');
+        const closeBtn = document.getElementById('closeBtn');
+        const overlay = document.getElementById('overlay');
+
+        function openSidebar() {
+            sidebar.classList.add('sidebar-open');
+            overlay.classList.add('overlay-active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeSidebar() {
+            sidebar.classList.remove('sidebar-open');
+            overlay.classList.remove('overlay-active');
+            document.body.style.overflow = '';
+        }
+
+        menuToggle.addEventListener('click', openSidebar);
+        closeBtn.addEventListener('click', closeSidebar);
+        overlay.addEventListener('click', closeSidebar);
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeSidebar();
+        });
+    </script>
+    
+</body>
+</html>

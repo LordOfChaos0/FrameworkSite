@@ -1,31 +1,545 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Триада Статики</title>
+    <title>Gatsby - Мощный фреймворк для статических сайтов | Триада Статики</title>
+    <script src="https://cdn.jsdelivr.net/npm/@unocss/runtime"></script>
     <link rel="stylesheet" href="../uno.css">
-</head>
+    <style>
+        .code-block {
+            background: #1a202c;
+            color: #e2e8f0;
+            padding: 1.5rem;
+            border-radius: 8px;
+            font-family: 'Monaco', 'Consolas', monospace;
+            font-size: 0.9rem;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+        .code-comment { color: #718096; }
+        .code-keyword { color: #fbb6ce; }
+        .code-string { color: #68d391; }
+        .code-function { color: #90cdf4; }
+        
+        .feature-card {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            border-left: 4px solid #8b5cf6;
+        }
+        .feature-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(139, 92, 246, 0.15);
+        }
+        
+        .installation-step {
+            counter-increment: step-counter;
+            margin-bottom: 2rem;
+            padding-left: 3rem;
+            position: relative;
+        }
+        .installation-step::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: #8b5cf6;
+            color: white;
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        
+        .use-case-grid {
+            display: grid;
+            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
 
+        /* Стили для примеров сайтов */
+        .website-example {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .website-example:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(139, 92, 246, 0.2);
+        }
+        .website-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #8b5cf6, #6366f1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        .website-content {
+            padding: 1.5rem;
+        }
+        .website-type {
+            display: inline-block;
+            background: #8b5cf6;
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+        
+        /* Исправления для логотипов */
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            border-radius: 12px;
+            padding: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            border: 2px solid #e5e7eb;
+        }
+        .framework-logo {
+            object-fit: contain;
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        
+        @media (max-width: 768px) {
+            .installation-step {
+                padding-left: 2.5rem;
+            }
+            .use-case-grid {
+                grid-template-columns: 1fr;
+            }
+            .code-block {
+                padding: 1rem;
+                font-size: 0.8rem;
+            }
+            .logo-container {
+                padding: 8px;
+            }
+            .website-content {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
 <body class="body-def reset-spacing">
 
     <header class="btn-primary flex-center p-4">
-        <h1 class="text-gradient">Фреймворки для статических сайтов</h1>
+        <h1 class="text-gradient">Gatsby - React-фреймворк для статических сайтов</h1>
     </header>
 
     <nav class="nav space-y-3">
         <button class="nav-a hover:bg-gray-800 hover:shadow-lg" id="menuToggle">☰ Меню</button>
         <a href="../index.html" class="nav-a hover:bg-gray-800 hover:shadow-lg">Главная</a>
-        <a href="" class="nav-a hover:bg-gray-800 hover:shadow-lg">Контакты</a>
+        <a href="#" class="nav-a hover:bg-gray-800 hover:shadow-lg">Контакты</a>
     </nav>
 
+    <main class="main-def">
+        <!-- Гер-секция -->
+        <section class="card bg-gradient-to-r from-purple-50 to-blue-50 border-l-4 border-purple-500">
+            <div class="flex flex-col md:flex-row items-center gap-6">
+                <div class="flex-1">
+                    <h1 class="text-3xl md:text-4xl font-bold text-purple-800 mb-4">Gatsby</h1>
+                    <h2 class="text-xl md:text-2xl text-purple-600 mb-4">Мощь React для статических сайтов</h2>
+                    <p class="text-gray-700 text-lg leading-relaxed">
+                        Современный фреймворк на основе React для создания быстрых, безопасных и масштабируемых веб-сайтов и приложений. 
+                        Объединяет лучшие практики из мира React, GraphQL и современных инструментов веб-разработки.
+                    </p>
+                </div>
+                <div class="logo-container">
+                    <img src="../src/images/gatsby_logo.jpeg" alt="Gatsby Logo" 
+                         class="framework-logo w-40 h-40 md:w-56 md:h-56"
+                         style="object-fit: cover; object-position: center;">
+                </div>
+            </div>
+        </section>
 
+        <!-- Быстрые факты -->
+        <section class="card">
+            <h2 class="main-title text-center mb-6">Ключевые характеристики</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div class="text-center p-4 bg-purple-50 rounded-lg">
+                    <div class="text-2xl font-bold text-purple-600 mb-2">⚡</div>
+                    <h3 class="font-bold text-purple-800">Производительность</h3>
+                    <p class="text-sm text-gray-600">Автоматическая оптимизация и код-сплиттинг</p>
+                </div>
+                <div class="text-center p-4 bg-purple-50 rounded-lg">
+                    <div class="text-2xl font-bold text-purple-600 mb-2">🔧</div>
+                    <h3 class="font-bold text-purple-800">Экосистема</h3>
+                    <p class="text-sm text-gray-600">2000+ плагинов для любых задач</p>
+                </div>
+                <div class="text-center p-4 bg-purple-50 rounded-lg">
+                    <div class="text-2xl font-bold text-purple-600 mb-2">📱</div>
+                    <h3 class="font-bold text-purple-800">PWA</h3>
+                    <p class="text-sm text-gray-600">Готовность к Progressive Web Apps</p>
+                </div>
+                <div class="text-center p-4 bg-purple-50 rounded-lg">
+                    <div class="text-2xl font-bold text-purple-600 mb-2">🚀</div>
+                    <h3 class="font-bold text-purple-800">GraphQL</h3>
+                    <p class="text-sm text-gray-600">Встроенная система управления данными</p>
+                </div>
+            </div>
+        </section>
 
+        <!-- Основные особенности -->
+        <section class="card">
+            <h2 class="main-title mb-6">Основные особенности Gatsby</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="feature-card bg-white p-6 rounded-lg border border-gray-200">
+                    <h3 class="text-xl font-bold text-purple-800 mb-3">🚀 Высокая производительность</h3>
+                    <p class="text-gray-700 mb-3">Автоматическая оптимизация изображений, код-сплиттинг, предзагрузка ресурсов и статическая генерация обеспечивают максимальную скорость загрузки.</p>
+                    <ul class="text-gray-600 space-y-1">
+                        <li>• Lighthouse score 90+ из коробки</li>
+                        <li>• Автоматическая оптимизация изображений</li>
+                        <li>• Прогрессивная загрузка JavaScript</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card bg-white p-6 rounded-lg border border-gray-200">
+                    <h3 class="text-xl font-bold text-purple-800 mb-3">🔌 Богатая экосистема</h3>
+                    <p class="text-gray-700 mb-3">Более 2000 плагинов для интеграции с CMS, аналитикой, интернет-магазинами и другими сервисами.</p>
+                    <ul class="text-gray-600 space-y-1">
+                        <li>• Плагины для популярных CMS</li>
+                        <li>• Интеграция с e-commerce</li>
+                        <li>• Поддержка TypeScript из коробки</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card bg-white p-6 rounded-lg border border-gray-200">
+                    <h3 class="text-xl font-bold text-purple-800 mb-3">📊 GraphQL Data Layer</h3>
+                    <p class="text-gray-700 mb-3">Единый слой данных на основе GraphQL позволяет легко получать и манипулировать данными из различных источников.</p>
+                    <ul class="text-gray-600 space-y-1">
+                        <li>• Унифицированный API для данных</li>
+                        <li>• Поддержка множества источников</li>
+                        <li>• Статический анализ запросов</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card bg-white p-6 rounded-lg border border-gray-200">
+                    <h3 class="text-xl font-bold text-purple-800 mb-3">🌐 PWA Ready</h3>
+                    <p class="text-gray-700 mb-3">Готовность к Progressive Web App с сервис-воркерами, оффлайн-режимом и возможностью установки на устройство.</p>
+                    <ul class="text-gray-600 space-y-1">
+                        <li>• Service Workers из коробки</li>
+                        <li>• App manifest автоматически</li>
+                        <li>• Оффлайн-функциональность</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Примеры сайтов на Gatsby -->
+        <section class="card">
+            <h2 class="main-title mb-2">Известные сайты на Gatsby</h2>
+            <h3 class="subtitle mb-6">Реальные примеры компаний, использующих Gatsby в продакшене</h3>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- React -->
+                <div class="website-example">
+                    <div class="website-image" style="background: linear-gradient(135deg, #61dafb, #21a9c7);">
+                        React
+                    </div>
+                    <div class="website-content">
+                        <span class="website-type">Документация</span>
+                        <h3 class="text-lg font-bold text-gray-800 mb-2">React.js</h3>
+                        <p class="text-gray-600 text-sm mb-4">
+                            Официальная документация React использует Gatsby для обеспечения быстрой загрузки и отличного пользовательского опыта.
+                        </p>
+                        <div class="flex items-center text-sm text-gray-500">
+                            <span class="mr-2">🚀</span>
+                            <span>Высокая производительность</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Figma -->
+                <div class="website-example">
+                    <div class="website-image" style="background: linear-gradient(135deg, #ff7262, #f24e1e);">
+                        Figma
+                    </div>
+                    <div class="website-content">
+                        <span class="website-type">Корпоративный сайт</span>
+                        <h3 class="text-lg font-bold text-gray-800 mb-2">Figma</h3>
+                        <p class="text-gray-600 text-sm mb-4">
+                            Компания Figma использует Gatsby для своего маркетингового сайта, обеспечивая быструю загрузку и плавные анимации.
+                        </p>
+                        <div class="flex items-center text-sm text-gray-500">
+                            <span class="mr-2">💼</span>
+                            <span>Корпоративный уровень</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Airbnb -->
+                <div class="website-example">
+                    <div class="website-image" style="background: linear-gradient(135deg, #ff5a5f, #ff385c);">
+                        Airbnb
+                    </div>
+                    <div class="website-content">
+                        <span class="website-type">Инженерный блог</span>
+                        <h3 class="text-lg font-bold text-gray-800 mb-2">Airbnb Engineering</h3>
+                        <p class="text-gray-600 text-sm mb-4">
+                            Инженерный блог Airbnb построен на Gatsby, демонстрируя возможности для технических публикаций.
+                        </p>
+                        <div class="flex items-center text-sm text-gray-500">
+                            <span class="mr-2">📝</span>
+                            <span>Технический блог</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tinder -->
+                <div class="website-example">
+                    <div class="website-image" style="background: linear-gradient(135deg, #ff6b6b, #ee5a52);">
+                        Tinder
+                    </div>
+                    <div class="website-content">
+                        <span class="website-type">Лендинг</span>
+                        <h3 class="text-lg font-bold text-gray-800 mb-2">Tinder</h3>
+                        <p class="text-gray-600 text-sm mb-4">
+                            Маркетинговые лендинги Tinder используют Gatsby для привлечения новых пользователей с помощью быстрых страниц.
+                        </p>
+                        <div class="flex items-center text-sm text-gray-500">
+                            <span class="mr-2">📱</span>
+                            <span>Мобильный опыт</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-6 p-4 bg-purple-50 rounded-lg border border-purple-200">
+                <h4 class="font-bold text-purple-800 mb-2">Почему эти компании выбрали Gatsby?</h4>
+                <p class="text-purple-700 text-sm">
+                    Крупные компании выбирают Gatsby для критически важных проектов благодаря его производительности, 
+                    безопасности и масштабируемости. Статическая генерация обеспечивает защиту от DDoS-атак, 
+                    а встроенная оптимизация гарантирует высокие показатели скорости.
+                </p>
+            </div>
+        </section>
+
+        <!-- Установка и настройка -->
+        <section class="card">
+            <h2 class="main-title mb-6">Установка и начало работы</h2>
+            
+            <div class="installation-steps">
+                <div class="installation-step">
+                    <h3 class="text-lg font-bold text-gray-800 mb-2">1. Установка Node.js</h3>
+                    <p class="text-gray-700 mb-3">Убедитесь, что у вас установлена Node.js версии 14 или выше.</p>
+                    <div class="code-block">
+                        <span class="code-comment"># Проверить версию Node.js</span><br>
+                        node --version<br>
+                        <span class="code-comment"># Проверить версию npm</span><br>
+                        npm --version
+                    </div>
+                </div>
+
+                <div class="installation-step">
+                    <h3 class="text-lg font-bold text-gray-800 mb-2">2. Установка Gatsby CLI</h3>
+                    <p class="text-gray-700 mb-3">Установите Gatsby CLI глобально через npm.</p>
+                    <div class="code-block">
+                        <span class="code-comment"># Установка Gatsby CLI глобально</span><br>
+                        npm install -g gatsby-cli
+                    </div>
+                </div>
+
+                <div class="installation-step">
+                    <h3 class="text-lg font-bold text-gray-800 mb-2">3. Создание нового проекта</h3>
+                    <p class="text-gray-700 mb-3">Создайте новый сайт с помощью Gatsby CLI.</p>
+                    <div class="code-block">
+                        <span class="code-comment"># Создание нового сайта</span><br>
+                        gatsby new my-gatsby-site<br>
+                        <span class="code-comment"># Переход в директорию проекта</span><br>
+                        cd my-gatsby-site
+                    </div>
+                </div>
+
+                <div class="installation-step">
+                    <h3 class="text-lg font-bold text-gray-800 mb-2">4. Запуск сервера разработки</h3>
+                    <p class="text-gray-700 mb-3">Запустите сервер для разработки и откройте сайт в браузере.</p>
+                    <div class="code-block">
+                        <span class="code-comment"># Запуск сервера разработки</span><br>
+                        gatsby develop<br>
+                        <span class="code-comment"># Сайт будет доступен по адресу http://localhost:8000</span>
+                    </div>
+                </div>
+
+                <div class="installation-step">
+                    <h3 class="text-lg font-bold text-gray-800 mb-2">5. Сборка для продакшена</h3>
+                    <p class="text-gray-700 mb-3">Соберите оптимизированную версию для развертывания.</p>
+                    <div class="code-block">
+                        <span class="code-comment"># Сборка проекта</span><br>
+                        gatsby build<br>
+                        <span class="code-comment"># Локальная проверка продакшен-сборки</span><br>
+                        gatsby serve
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Пример кода -->
+        <section class="card">
+            <h2 class="main-title mb-6">Пример компонента Gatsby</h2>
+            <p class="text-gray-700 mb-4">Вот простой пример страницы на Gatsby с использованием GraphQL для получения данных:</p>
+            
+            <div class="code-block">
+                <span class="code-keyword">import</span> React <span class="code-keyword">from</span> <span class="code-string">"react"</span><br>
+                <span class="code-keyword">import</span> { graphql } <span class="code-keyword">from</span> <span class="code-string">"gatsby"</span><br><br>
+                
+                <span class="code-keyword">const</span> <span class="code-function">IndexPage</span> = ({ data }) => (<br>
+                &nbsp;&nbsp;<span class="code-keyword">&lt;</span>div<span class="code-keyword">&gt;</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">&lt;</span>h1<span class="code-keyword">&gt;</span>{data.site.siteMetadata.title}<span class="code-keyword">&lt;</span>/h1<span class="code-keyword">&gt;</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">&lt;</span>p<span class="code-keyword">&gt;</span>Добро пожаловать в мой Gatsby сайт!<span class="code-keyword">&lt;</span>/p<span class="code-keyword">&gt;</span><br>
+                &nbsp;&nbsp;<span class="code-keyword">&lt;</span>/div<span class="code-keyword">&gt;</span><br>
+                )<br><br>
+                
+                <span class="code-keyword">export const</span> query = graphql<span class="code-keyword">`</span><br>
+                &nbsp;&nbsp;query {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;site {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;siteMetadata {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;title<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                &nbsp;&nbsp;}<br>
+                <span class="code-keyword">`</span><br><br>
+                
+                <span class="code-keyword">export default</span> IndexPage
+            </div>
+        </section>
+
+        <!-- Примеры использования -->
+        <section class="card">
+            <h2 class="main-title mb-6">Примеры использования Gatsby</h2>
+            
+            <div class="use-case-grid">
+                <div class="bg-white p-6 rounded-lg border border-purple-200">
+                    <h3 class="text-lg font-bold text-purple-800 mb-3">🏢 Корпоративные сайты</h3>
+                    <p class="text-gray-700 mb-3">Идеален для сложных корпоративных сайтов с богатой интерактивностью.</p>
+                    <ul class="text-gray-600 text-sm space-y-1">
+                        <li>• Динамические формы и калькуляторы</li>
+                        <li>• Интеграция с CRM системами</li>
+                        <li>• Многоязычная поддержка</li>
+                    </ul>
+                </div>
+
+                <div class="bg-white p-6 rounded-lg border border-purple-200">
+                    <h3 class="text-lg font-bold text-purple-800 mb-3">🛒 E-commerce</h3>
+                    <p class="text-gray-700 mb-3">Мощные решения для интернет-магазинов с интеграцией платежных систем.</p>
+                    <ul class="text-gray-600 text-sm space-y-1">
+                        <li>• Интеграция с Shopify, Stripe</li>
+                        <li>• Динамические корзины покупок</li>
+                        <li>• Персонализированные рекомендации</li>
+                    </ul>
+                </div>
+
+                <div class="bg-white p-6 rounded-lg border border-purple-200">
+                    <h3 class="text-lg font-bold text-purple-800 mb-3">📚 Интерактивная документация</h3>
+                    <p class="text-gray-700 mb-3">Создание интерактивной документации с поиском и навигацией.</p>
+                    <ul class="text-gray-600 text-sm space-y-1">
+                        <li>• Алгоритмы поиска по контенту</li>
+                        <li>• Интерактивные примеры кода</li>
+                        <li>• Версионирование документации</li>
+                    </ul>
+                </div>
+
+                <div class="bg-white p-6 rounded-lg border border-purple-200">
+                    <h3 class="text-lg font-bold text-purple-800 mb-3">🎨 Портфолио и блоги</h3>
+                    <p class="text-gray-700 mb-3">Современные портфолио и блоги с анимациями и интерактивными элементами.</p>
+                    <ul class="text-gray-600 text-sm space-y-1">
+                        <li>• 3D анимации и переходы</li>
+                        <li>• Интеграция с CMS (Contentful)</li>
+                        <li>• Комментарии и социальные функции</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Плюсы и минусы -->
+        <section class="card">
+            <h2 class="main-title mb-6">Преимущества и ограничения</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-green-50 p-6 rounded-lg border border-green-200">
+                    <h3 class="text-xl font-bold text-green-800 mb-4">✅ Преимущества</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <span class="text-green-500 mr-2">✓</span>
+                            <span><strong>Отличная производительность</strong> - автоматическая оптимизация и код-сплиттинг</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-green-500 mr-2">✓</span>
+                            <span><strong>Богатая экосистема</strong> - тысячи плагинов и стартеров</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-green-500 mr-2">✓</span>
+                            <span><strong>Отличный DX</strong> - горячая перезагрузка, GraphQL playground</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-green-500 mr-2">✓</span>
+                            <span><strong>Готовность к PWA</strong> - сервис-воркеры и оффлайн-режим</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="bg-red-50 p-6 rounded-lg border border-red-200">
+                    <h3 class="text-xl font-bold text-red-800 mb-4">❌ Ограничения</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <span class="text-red-500 mr-2">✗</span>
+                            <span><strong>Высокий порог входа</strong> - требует знания React и GraphQL</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-red-500 mr-2">✗</span>
+                            <span><strong>Время сборки</strong> - может быть медленным для больших проектов</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-red-500 mr-2">✗</span>
+                            <span><strong>Сложность настройки</strong> - больше конфигурации по сравнению с конкурентами</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-red-500 mr-2">✗</span>
+                            <span><strong>Размер бандла</strong> - может быть больше из-за React и зависимостей</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Рекомендации -->
+        <section class="card bg-purple-50 border-l-4 border-purple-500">
+            <h2 class="text-2xl font-bold text-purple-800 mb-4">Когда выбирать Gatsby?</h2>
+            <div class="prose max-w-none">
+                <p class="text-purple-700 mb-4">
+                    <strong>Gatsby идеально подходит для:</strong>
+                </p>
+                <ul class="text-purple-700 space-y-2 mb-4">
+                    <li>• Сложных корпоративных сайтов с богатой интерактивностью</li>
+                    <li>• E-commerce проектов с интеграцией платежных систем</li>
+                    <li>• Проектов, где важна максимальная производительность и SEO</li>
+                    <li>• Команд с опытом работы с React и современным JavaScript</li>
+                    <li>• Проектов, требующих интеграции с множеством API и сервисов</li>
+                </ul>
+                <p class="text-purple-700">
+                    Если вам нужна максимальная простота или экстремальная скорость сборки для большого количества страниц, 
+                    рассмотрите <a href="../Pages/Jekyll.html" class="text-purple-600 font-semibold">Jekyll</a> или 
+                    <a href="../Pages/Hugo.html" class="text-purple-600 font-semibold">Hugo</a>.
+                </p>
+            </div>
+        </section>
+    </main>
 
     <footer class="nav">
-        <p class="nav-a">&copy Vlad </p>
-        <p class="nav-a">Tarakanov</p>
+        <p class="nav-a">&copy Vlad Tarakanov</p>
     </footer>
 
     <div class="sidebar" id="sidebar">
@@ -71,6 +585,6 @@
             if (e.key === 'Escape') closeSidebar();
         });
     </script>
-    
+
 </body>
 </html>

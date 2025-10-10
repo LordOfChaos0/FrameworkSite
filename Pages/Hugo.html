@@ -1,31 +1,621 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Триада Статики</title>
+    <title>Hugo - Самый быстрый фреймворк для статических сайтов | Триада Статики</title>
+    <script src="https://cdn.jsdelivr.net/npm/@unocss/runtime"></script>
     <link rel="stylesheet" href="../uno.css">
-</head>
+    <style>
+        .code-block {
+            background: #1a202c;
+            color: #e2e8f0;
+            padding: 1.5rem;
+            border-radius: 8px;
+            font-family: 'Monaco', 'Consolas', monospace;
+            font-size: 0.9rem;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+        .code-comment { color: #718096; }
+        .code-keyword { color: #10b981; }
+        .code-string { color: #68d391; }
+        .code-function { color: #60a5fa; }
+        
+        .feature-card {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            border-left: 4px solid #10b981;
+        }
+        .feature-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.15);
+        }
+        
+        .installation-step {
+            counter-increment: step-counter;
+            margin-bottom: 2rem;
+            padding-left: 3rem;
+            position: relative;
+        }
+        .installation-step::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: #10b981;
+            color: white;
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        
+        .use-case-grid {
+            display: grid;
+            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
 
+        /* Стили для примеров сайтов */
+        .website-example {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .website-example:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(16, 185, 129, 0.2);
+        }
+        .website-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #10b981, #059669);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        .website-content {
+            padding: 1.5rem;
+        }
+        .website-type {
+            display: inline-block;
+            background: #10b981;
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+        
+        /* Исправления для логотипов */
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            border-radius: 12px;
+            padding: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            border: 2px solid #e5e7eb;
+        }
+        .framework-logo {
+            object-fit: contain;
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        
+        /* Специфичные стили для Hugo */
+        .speed-metric {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            margin: 2rem 0;
+        }
+        .speed-number {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        .speed-label {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        @media (max-width: 768px) {
+            .installation-step {
+                padding-left: 2.5rem;
+            }
+            .use-case-grid {
+                grid-template-columns: 1fr;
+            }
+            .code-block {
+                padding: 1rem;
+                font-size: 0.8rem;
+            }
+            .logo-container {
+                padding: 8px;
+            }
+            .website-content {
+                padding: 1rem;
+            }
+            .speed-number {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
 <body class="body-def reset-spacing">
 
     <header class="btn-primary flex-center p-4">
-        <h1 class="text-gradient">Фреймворки для статических сайтов</h1>
+        <h1 class="text-gradient">Hugo - Самый быстрый фреймворк для статических сайтов</h1>
     </header>
 
     <nav class="nav space-y-3">
         <button class="nav-a hover:bg-gray-800 hover:shadow-lg" id="menuToggle">☰ Меню</button>
         <a href="../index.html" class="nav-a hover:bg-gray-800 hover:shadow-lg">Главная</a>
-        <a href="" class="nav-a hover:bg-gray-800 hover:shadow-lg">Контакты</a>
+        <a href="#" class="nav-a hover:bg-gray-800 hover:shadow-lg">Контакты</a>
     </nav>
 
+    <main class="main-def">
+        <!-- Гер-секция -->
+        <section class="card bg-gradient-to-r from-green-50 to-teal-50 border-l-4 border-green-500">
+            <div class="flex flex-col md:flex-row items-center gap-6">
+                <div class="flex-1">
+                    <h1 class="text-3xl md:text-4xl font-bold text-green-800 mb-4">Hugo</h1>
+                    <h2 class="text-xl md:text-2xl text-green-600 mb-4">Молниеносная скорость на Go</h2>
+                    <p class="text-gray-700 text-lg leading-relaxed">
+                        Самый быстрый в мире фреймворк для построения веб-сайтов. Написан на Go, Hugo генерирует статические сайты 
+                        с невероятной скоростью - тысячи страниц за секунды. Идеальное решение для больших блогов, документации и сайтов, 
+                        где важна каждая миллисекунда.
+                    </p>
+                </div>
+                <div class="logo-container">
+                    <img src="../src/images/hugo_logo.jpg" alt="Hugo Logo" 
+                         class="framework-logo w-40 h-40 md:w-56 md:h-56"
+                         style="object-fit: cover; object-position: center;">
+                </div>
+            </div>
+        </section>
 
+        <!-- Блок скорости -->
+        <section class="card">
+            <div class="speed-metric">
+                <div class="speed-number">2-5 сек</div>
+                <div class="speed-label">для сборки 1000 страниц</div>
+                <p class="mt-4 opacity-90">Самая высокая скорость сборки среди всех статических генераторов</p>
+            </div>
+        </section>
 
+        <!-- Быстрые факты -->
+        <section class="card">
+            <h2 class="main-title text-center mb-6">Ключевые характеристики</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div class="text-center p-4 bg-green-50 rounded-lg">
+                    <div class="text-2xl font-bold text-green-600 mb-2">⚡</div>
+                    <h3 class="font-bold text-green-800">Скорость</h3>
+                    <p class="text-sm text-gray-600">Тысячи страниц за секунды</p>
+                </div>
+                <div class="text-center p-4 bg-green-50 rounded-lg">
+                    <div class="text-2xl font-bold text-green-600 mb-2">📦</div>
+                    <h3 class="font-bold text-green-800">Один файл</h3>
+                    <p class="text-sm text-gray-600">Никаких зависимостей</p>
+                </div>
+                <div class="text-center p-4 bg-green-50 rounded-lg">
+                    <div class="text-2xl font-bold text-green-600 mb-2">🔧</div>
+                    <h3 class="font-bold text-green-800">Встроенные функции</h3>
+                    <p class="text-sm text-gray-600">Image processing, Sass и др.</p>
+                </div>
+                <div class="text-center p-4 bg-green-50 rounded-lg">
+                    <div class="text-2xl font-bold text-green-600 mb-2">🌍</div>
+                    <h3 class="font-bold text-green-800">Мультиязычность</h3>
+                    <p class="text-sm text-gray-600">Встроенная поддержка i18n</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Основные особенности -->
+        <section class="card">
+            <h2 class="main-title mb-6">Основные особенности Hugo</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="feature-card bg-white p-6 rounded-lg border border-gray-200">
+                    <h3 class="text-xl font-bold text-green-800 mb-3">🚀 Невероятная скорость</h3>
+                    <p class="text-gray-700 mb-3">Собран на Go, что обеспечивает самую высокую скорость сборки среди всех статических генераторов.</p>
+                    <ul class="text-gray-600 space-y-1">
+                        <li>• Сборка 10,000+ страниц за секунды</li>
+                        <li>• Мгновенная пересборка при изменениях</li>
+                        <li>• Минимальное время ожидания при разработке</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card bg-white p-6 rounded-lg border border-gray-200">
+                    <h3 class="text-xl font-bold text-green-800 mb-3">📦 Нет зависимостей</h3>
+                    <p class="text-gray-800 mb-3">Один бинарный файл - никаких Node.js, Ruby, Python или других зависимостей.</p>
+                    <ul class="text-gray-600 space-y-1">
+                        <li>• Простая установка и обновление</li>
+                        <li>• Работает везде где есть Go</li>
+                        <li>• Легкое развертывание на серверах</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card bg-white p-6 rounded-lg border border-gray-200">
+                    <h3 class="text-xl font-bold text-green-800 mb-3">🛠️ Богатые возможности</h3>
+                    <p class="text-gray-700 mb-3">Встроенные функции для обработки изображений, Sass/SCSS компиляции и многое другое.</p>
+                    <ul class="text-gray-600 space-y-1">
+                        <li>• Автоматическая обработка изображений</li>
+                        <li>• Встроенная поддержка Sass/SCSS</li>
+                        <li>• Продвинутая система шаблонов</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card bg-white p-6 rounded-lg border border-gray-200">
+                    <h3 class="text-xl font-bold text-green-800 mb-3">🌐 Мультиязычность</h3>
+                    <p class="text-gray-700 mb-3">Встроенная поддержка многоязычных сайтов с продвинутой системой i18n.</p>
+                    <ul class="text-gray-600 space-y-1">
+                        <li>• Простая настройка языков</li>
+                        <li>• Автоматическое переключение</li>
+                        <li>• Поддержка RTL языков</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Примеры сайтов на Hugo -->
+        <section class="card">
+            <h2 class="main-title mb-2">Известные сайты на Hugo</h2>
+            <h3 class="subtitle mb-6">Реальные примеры компаний, использующих Hugo в продакшене</h3>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Let's Encrypt -->
+                <div class="website-example">
+                    <div class="website-image" style="background: linear-gradient(135deg, #2CA260, #1F7C47);">
+                        Let's Encrypt
+                    </div>
+                    <div class="website-content">
+                        <span class="website-type">Документация</span>
+                        <h3 class="text-lg font-bold text-gray-800 mb-2">Let's Encrypt</h3>
+                        <p class="text-gray-600 text-sm mb-4">
+                            Официальная документация Let's Encrypt использует Hugo для обеспечения максимальной скорости доступа к критически важной информации.
+                        </p>
+                        <div class="flex items-center text-sm text-gray-500">
+                            <span class="mr-2">📚</span>
+                            <span>Техническая документация</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Smashing Magazine -->
+                <div class="website-example">
+                    <div class="website-image" style="background: linear-gradient(135deg, #E34F32, #D44326);">
+                        Smashing Magazine
+                    </div>
+                    <div class="website-content">
+                        <span class="website-type">Блог</span>
+                        <h3 class="text-lg font-bold text-gray-800 mb-2">Smashing Magazine</h3>
+                        <p class="text-gray-600 text-sm mb-4">
+                            Один из самых известных блогов о веб-разработке использует Hugo для управления тысячами статей.
+                        </p>
+                        <div class="flex items-center text-sm text-gray-500">
+                            <span class="mr-2">📝</span>
+                            <span>Технический блог</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Linode -->
+                <div class="website-example">
+                    <div class="website-image" style="background: linear-gradient(135deg, #00A95C, #009150);">
+                        Linode
+                    </div>
+                    <div class="website-content">
+                        <span class="website-type">Документация</span>
+                        <h3 class="text-lg font-bold text-gray-800 mb-2">Linode</h3>
+                        <p class="text-gray-600 text-sm mb-4">
+                            Документация облачного провайдера Linode построена на Hugo для обеспечения надежности и скорости.
+                        </p>
+                        <div class="flex items-center text-sm text-gray-500">
+                            <span class="mr-2">☁️</span>
+                            <span>Облачные технологии</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Netlify -->
+                <div class="website-example">
+                    <div class="website-image" style="background: linear-gradient(135deg, #25C7B7, #1BAE9F);">
+                        Netlify
+                    </div>
+                    <div class="website-content">
+                        <span class="website-type">Документация</span>
+                        <h3 class="text-lg font-bold text-gray-800 mb-2">Netlify</h3>
+                        <p class="text-gray-600 text-sm mb-4">
+                            Документация платформы Netlify использует Hugo, демонстрируя доверие к собственным рекомендациям.
+                        </p>
+                        <div class="flex items-center text-sm text-gray-500">
+                            <span class="mr-2">🚀</span>
+                            <span>Платформа хостинга</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-6 p-4 bg-green-50 rounded-lg border border-green-200">
+                <h4 class="font-bold text-green-800 mb-2">Почему эти компании выбрали Hugo?</h4>
+                <p class="text-green-700 text-sm">
+                    Компании, работающие с большими объемами документации и часто обновляемым контентом, выбирают Hugo 
+                    за его непревзойденную скорость сборки. Это особенно важно для технической документации, где задержки 
+                    в публикации обновлений могут быть критичными.
+                </p>
+            </div>
+        </section>
+
+        <!-- Установка и настройка -->
+        <section class="card">
+            <h2 class="main-title mb-6">Установка и начало работы</h2>
+            
+            <div class="installation-steps">
+                <div class="installation-step">
+                    <h3 class="text-lg font-bold text-gray-800 mb-2">1. Скачивание Hugo</h3>
+                    <p class="text-gray-700 mb-3">Скачайте подходящую версию Hugo для вашей операционной системы.</p>
+                    <div class="code-block">
+                        <span class="code-comment"># Для macOS (через Homebrew)</span><br>
+                        brew install hugo<br><br>
+                        
+                        <span class="code-comment"># Для Windows (через Chocolatey)</span><br>
+                        choco install hugo -confirm<br><br>
+                        
+                        <span class="code-comment"># Для Linux (скачать бинарный файл)</span><br>
+                        <span class="code-comment"># Или через пакетный менеджер вашего дистрибутива</span>
+                    </div>
+                </div>
+
+                <div class="installation-step">
+                    <h3 class="text-lg font-bold text-gray-800 mb-2">2. Проверка установки</h3>
+                    <p class="text-gray-700 mb-3">Убедитесь, что Hugo установлен корректно.</p>
+                    <div class="code-block">
+                        <span class="code-comment"># Проверить версию Hugo</span><br>
+                        hugo version
+                    </div>
+                </div>
+
+                <div class="installation-step">
+                    <h3 class="text-lg font-bold text-gray-800 mb-2">3. Создание нового сайта</h3>
+                    <p class="text-gray-700 mb-3">Создайте новый сайт с помощью Hugo CLI.</p>
+                    <div class="code-block">
+                        <span class="code-comment"># Создание нового сайта</span><br>
+                        hugo new site my-hugo-site<br>
+                        <span class="code-comment"># Переход в директорию проекта</span><br>
+                        cd my-hugo-site
+                    </div>
+                </div>
+
+                <div class="installation-step">
+                    <h3 class="text-lg font-bold text-gray-800 mb-2">4. Добавление темы (опционально)</h3>
+                    <p class="text-gray-700 mb-3">Добавьте тему для быстрого старта.</p>
+                    <div class="code-block">
+                        <span class="code-comment"># Инициализация git репозитория</span><br>
+                        git init<br>
+                        <span class="code-comment"># Добавление темы как submodule</span><br>
+                        git submodule add https://github.com/theNewDynamic/gohugo-theme-ananke.git themes/ananke<br>
+                        <span class="code-comment"># Указание темы в конфигурации</span><br>
+                        echo 'theme = "ananke"' >> config.toml
+                    </div>
+                </div>
+
+                <div class="installation-step">
+                    <h3 class="text-lg font-bold text-gray-800 mb-2">5. Запуск сервера разработки</h3>
+                    <p class="text-gray-700 mb-3">Запустите сервер для разработки.</p>
+                    <div class="code-block">
+                        <span class="code-comment"># Запуск сервера разработки</span><br>
+                        hugo server -D<br>
+                        <span class="code-comment"># Сайт будет доступен по адресу http://localhost:1313</span>
+                    </div>
+                </div>
+
+                <div class="installation-step">
+                    <h3 class="text-lg font-bold text-gray-800 mb-2">6. Сборка для продакшена</h3>
+                    <p class="text-gray-700 mb-3">Соберите оптимизированную версию для развертывания.</p>
+                    <div class="code-block">
+                        <span class="code-comment"># Сборка проекта</span><br>
+                        hugo<br>
+                        <span class="code-comment"># Сгенерированные файлы будут в папке public/</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Пример структуры и кода -->
+        <section class="card">
+            <h2 class="main-title mb-6">Структура проекта и примеры</h2>
+            
+            <div class="mb-6">
+                <h3 class="text-lg font-bold text-gray-800 mb-3">Структура папок Hugo</h3>
+                <div class="code-block">
+                    my-hugo-site/<br>
+                    ├── archetypes/          <span class="code-comment"># Шаблоны контента</span><br>
+                    ├── content/             <span class="code-comment"># Основной контент</span><br>
+                    │   ├── posts/           <span class="code-comment"># Статьи блога</span><br>
+                    │   └── _index.md        <span class="code-comment"># Главная страница</span><br>
+                    ├── data/                <span class="code-comment"># Данные сайта</span><br>
+                    ├── layouts/             <span class="code-comment"># HTML шаблоны</span><br>
+                    ├── static/              <span class="code-comment"># Статические файлы</span><br>
+                    ├── themes/              <span class="code-comment"># Темы</span><br>
+                    └── config.toml          <span class="code-comment"># Конфигурация</span>
+                </div>
+            </div>
+
+            <div class="mb-6">
+                <h3 class="text-lg font-bold text-gray-800 mb-3">Пример Front Matter</h3>
+                <p class="text-gray-700 mb-3">Front Matter в Hugo использует YAML, TOML или JSON формат:</p>
+                <div class="code-block">
+                    <span class="code-comment">---</span><br>
+                    title: "Моя первая статья"<br>
+                    date: 2023-10-01<br>
+                    description: "Это описание моей статьи"<br>
+                    categories: ["web", "hugo"]<br>
+                    tags: ["статический", "сайт"]<br>
+                    draft: false<br>
+                    <span class="code-comment">---</span><br><br>
+                    
+                    <span class="code-comment"># Заголовок статьи</span><br>
+                    Содержание статьи в формате Markdown...
+                </div>
+            </div>
+
+            <div>
+                <h3 class="text-lg font-bold text-gray-800 mb-3">Пример шаблона списка</h3>
+                <div class="code-block">
+                    <span class="code-comment">{{ define "main" }}</span><br>
+                    &lt;div class="container"&gt;<br>
+                    &nbsp;&nbsp;&lt;h1&gt;{{ .Title }}&lt;/h1&gt;<br>
+                    &nbsp;&nbsp;<span class="code-comment">{{ range .Pages }}</span><br>
+                    &nbsp;&nbsp;&lt;article&gt;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&lt;h2&gt;&lt;a href="{{ .Permalink }}"&gt;{{ .Title }}&lt;/a&gt;&lt;/h2&gt;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&lt;time&gt;{{ .Date.Format "January 2, 2006" }}&lt;/time&gt;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;{{ .Summary }}&lt;/p&gt;<br>
+                    &nbsp;&nbsp;&lt;/article&gt;<br>
+                    &nbsp;&nbsp;<span class="code-comment">{{ end }}</span><br>
+                    &lt;/div&gt;<br>
+                    <span class="code-comment">{{ end }}</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Примеры использования -->
+        <section class="card">
+            <h2 class="main-title mb-6">Примеры использования Hugo</h2>
+            
+            <div class="use-case-grid">
+                <div class="bg-white p-6 rounded-lg border border-green-200">
+                    <h3 class="text-lg font-bold text-green-800 mb-3">📝 Большие блоги</h3>
+                    <p class="text-gray-700 mb-3">Идеален для блогов с тысячами статей благодаря мгновенной сборке.</p>
+                    <ul class="text-gray-600 text-sm space-y-1">
+                        <li>• Быстрая пересборка при изменениях</li>
+                        <li>• Эффективная работа с тегами и категориями</li>
+                        <li>• Встроенная поддержка поиска</li>
+                    </ul>
+                </div>
+
+                <div class="bg-white p-6 rounded-lg border border-green-200">
+                    <h3 class="text-lg font-bold text-green-800 mb-3">📚 Техническая документация</h3>
+                    <p class="text-gray-700 mb-3">Отлично подходит для документации продуктов и API.</p>
+                    <ul class="text-gray-600 text-sm space-y-1">
+                        <li>• Мультиязычная документация</li>
+                        <li>• Версионирование документации</li>
+                        <li>• Быстрый поиск по контенту</li>
+                    </ul>
+                </div>
+
+                <div class="bg-white p-6 rounded-lg border border-green-200">
+                    <h3 class="text-lg font-bold text-green-800 mb-3">📰 Новостные порталы</h3>
+                    <p class="text-gray-700 mb-3">Быстрая публикация новостей и статей.</p>
+                    <ul class="text-gray-600 text-sm space-y-1">
+                        <li>• Мгновенная публикация контента</li>
+                        <li>• Автоматические RSS-ленты</li>
+                        <li>• Социальные мета-теги</li>
+                    </ul>
+                </div>
+
+                <div class="bg-white p-6 rounded-lg border border-green-200">
+                    <h3 class="text-lg font-bold text-green-800 mb-3">🏢 Корпоративные сайты</h3>
+                    <p class="text-gray-700 mb-3">Надежные и быстрые корпоративные сайты.</p>
+                    <ul class="text-gray-600 text-sm space-y-1">
+                        <li>• Высокая доступность</li>
+                        <li>• Легкое масштабирование</li>
+                        <li>• Простое обслуживание</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Плюсы и минусы -->
+        <section class="card">
+            <h2 class="main-title mb-6">Преимущества и ограничения</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-green-50 p-6 rounded-lg border border-green-200">
+                    <h3 class="text-xl font-bold text-green-800 mb-4">✅ Преимущества</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <span class="text-green-500 mr-2">✓</span>
+                            <span><strong>Невероятная скорость</strong> - самая быстрая сборка среди всех генераторов</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-green-500 mr-2">✓</span>
+                            <span><strong>Простота установки</strong> - один бинарный файл без зависимостей</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-green-500 mr-2">✓</span>
+                            <span><strong>Богатые возможности</strong> - встроенные функции для изображений, Sass и т.д.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-green-500 mr-2">✓</span>
+                            <span><strong>Надежность</strong> - стабильная работа даже с огромными сайтами</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="bg-red-50 p-6 rounded-lg border border-red-200">
+                    <h3 class="text-xl font-bold text-red-800 mb-4">❌ Ограничения</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <span class="text-red-500 mr-2">✗</span>
+                            <span><strong>Go templates</strong> - требуется изучение синтаксиса шаблонов Go</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-red-500 mr-2">✗</span>
+                            <span><strong>Меньше плагинов</strong> - по сравнению с экосистемой Gatsby</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-red-500 mr-2">✗</span>
+                            <span><strong>Ограниченная интерактивность</strong> - меньше возможностей для SPA</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-red-500 mr-2">✗</span>
+                            <span><strong>TypeScript поддержка</strong> - требует дополнительных инструментов</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Рекомендации -->
+        <section class="card bg-green-50 border-l-4 border-green-500">
+            <h2 class="text-2xl font-bold text-green-800 mb-4">Когда выбирать Hugo?</h2>
+            <div class="prose max-w-none">
+                <p class="text-green-700 mb-4">
+                    <strong>Hugo идеально подходит для:</strong>
+                </p>
+                <ul class="text-green-700 space-y-2 mb-4">
+                    <li>• Больших блогов с тысячами статей</li>
+                    <li>• Технической документации и API reference</li>
+                    <li>• Новостных порталов и медиа-сайтов</li>
+                    <li>• Проектов, где критически важна скорость сборки</li>
+                    <li>• Команд, ценящих простоту и надежность</li>
+                </ul>
+                <p class="text-green-700">
+                    Если вам нужны сложные интерактивные возможности или богатая экосистема плагинов, 
+                    рассмотрите <a href="../Pages/Gatsby.html" class="text-green-600 font-semibold">Gatsby</a>. 
+                    Для простых блогов с глубокой интеграцией GitHub Pages подойдет 
+                    <a href="../Pages/Jekyll.html" class="text-green-600 font-semibold">Jekyll</a>.
+                </p>
+            </div>
+        </section>
+    </main>
 
     <footer class="nav">
-        <p class="nav-a">&copy Vlad </p>
-        <p class="nav-a">Tarakanov</p>
+        <p class="nav-a">&copy Vlad Tarakanov</p>
     </footer>
 
     <div class="sidebar" id="sidebar">
@@ -71,6 +661,6 @@
             if (e.key === 'Escape') closeSidebar();
         });
     </script>
-    
+
 </body>
 </html>

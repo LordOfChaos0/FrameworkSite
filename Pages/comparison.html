@@ -43,8 +43,65 @@
             font-weight: 600;
             font-size: 0.875rem;
         }
+
+        /* Исправления для логотипов */
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            border-radius: 8px;
+            padding: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .framework-logo {
+            object-fit: contain;
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Стили для сценариев использования */
+        .scenario-card {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .scenario-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
         
-        /* Мобильная адаптация */
+        /* Стили для семантической таблицы */
+        .metric-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+        .metric-table th,
+        .metric-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .metric-table thead th {
+            background-color: #f8fafc;
+            font-weight: 600;
+            color: #374151;
+            border-bottom: 2px solid #e5e7eb;
+        }
+        .metric-table tbody tr:hover {
+            background-color: #f9fafb;
+        }
+        .framework-badge {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin: 2px;
+        }
+        .badge-gatsby { background-color: #8b5cf6; color: white; }
+        .badge-hugo { background-color: #10b981; color: white; }
+        .badge-jekyll { background-color: #f59e0b; color: white; }
+        
         @media (max-width: 768px) {
             .comparison-row {
                 flex-direction: column;
@@ -56,6 +113,16 @@
             }
             .progress-value {
                 text-align: left;
+            }
+            .logo-container {
+                padding: 6px;
+            }
+            .metric-table {
+                font-size: 0.875rem;
+            }
+            .metric-table th,
+            .metric-table td {
+                padding: 8px 6px;
             }
         }
     </style>
@@ -344,6 +411,81 @@
             </div>
         </section>
 
+        <section class="card">
+            <h2 class="main-title text-center mb-2">Технические характеристики</h2>
+            <h3 class="subtitle text-center mb-6">Сравнение нефункциональных метрик и особенностей</h3>
+
+            <div class="overflow-x-auto">
+                <table class="metric-table">
+                    <thead>
+                        <tr>
+                            <th scope="col" class="w-1/4">Характеристика</th>
+                            <th scope="col" class="w-1/4">Gatsby</th>
+                            <th scope="col" class="w-1/4">Hugo</th>
+                            <th scope="col" class="w-1/4">Jekyll</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">Технологический стек</th>
+                            <td>React, GraphQL, Node.js</td>
+                            <td>Go (Golang)</td>
+                            <td>Ruby, Liquid</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Архитектура</th>
+                            <td>Компонентная (React)</td>
+                            <td>Шаблоны и партиалы</td>
+                            <td>Layouts и includes</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Система шаблонов</th>
+                            <td>JSX компоненты</td>
+                            <td>Go templates</td>
+                            <td>Liquid templates</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Управление данными</th>
+                            <td>GraphQL, Headless CMS</td>
+                            <td>Front matter, JSON, CSV</td>
+                            <td>Front matter, YAML данные</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Типичное время сборки</th>
+                            <td>30-60 сек (1000 стр)</td>
+                            <td>2-5 сек (1000 стр)</td>
+                            <td>60-120 сек (1000 стр)</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Установка</th>
+                            <td>npm install -g gatsby-cli</td>
+                            <td>Скачать бинарный файл</td>
+                            <td>gem install jekyll bundler</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Размер бандла</th>
+                            <td>Средний-большой</td>
+                            <td>Минимальный</td>
+                            <td>Средний</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Рекомендуемый хостинг</th>
+                            <td>Netlify, Vercel</td>
+                            <td>Любой статический хостинг</td>
+                            <td>GitHub Pages</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Лучший для...</th>
+                            <td>Сложные сайты, веб-приложения</td>
+                            <td>Большие блоги, документация</td>
+                            <td>Личные блоги, сайты-визитки</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+
         <!-- Сравнение по категориям -->
         <section class="card">
             <h2 class="text-xl font-bold mb-6">Сравнение по ключевым параметрам</h2>
@@ -488,6 +630,33 @@
                 Более длинная полоса означает лучшие показатели в данной характеристике. 
                 Процентные значения помогают точно оценить различия между фреймворками.
             </p>
+        </section>
+
+        <section class="card">
+            <h2 class="main-title text-center mb-6">Какой фреймворк выбрать?</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="text-center p-4">
+                    <div class="logo-container mx-auto mb-3 w-16 h-16">
+                        <img src="../src/images/gatsby_logo.jpeg" alt="Gatsby" class="framework-logo w-full h-full">
+                    </div>
+                    <h3 class="font-bold text-purple-800 mb-2"><a href="./Gatsby.html">Выберите Gatsby</a></h3>
+                    <p class="text-sm text-gray-600">Если нужны динамические возможности SPA и богатая экосистема</p>
+                </div>
+                <div class="text-center p-4">
+                    <div class="logo-container mx-auto mb-3 w-16 h-16">
+                        <img src="../src/images/hugo_logo.jpg" alt="Hugo" class="framework-logo w-full h-full">
+                    </div>
+                    <h3 class="font-bold text-green-800 mb-2"><a href="./Hugo.html">Выберите Hugo</a></h3>
+                    <p class="text-sm text-gray-600">Если важна максимальная скорость сборки и производительность</p>
+                </div>
+                <div class="text-center p-4">
+                    <div class="logo-container mx-auto mb-3 w-16 h-16">
+                        <img src="../src/images/jekyll_logo.jpg" alt="Jekyll" class="framework-logo w-full h-full">
+                    </div>
+                    <h3 class="font-bold text-amber-800 mb-2"><a href="./Jekyll.html">Выберите Jekyll</a></h3>
+                    <p class="text-sm text-gray-600">Если нужна простота и быстрый старт с минимальными настройками</p>
+                </div>
+            </div>
         </section>
     </main>
 

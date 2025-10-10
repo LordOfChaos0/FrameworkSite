@@ -1,31 +1,454 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Триада Статики</title>
+    <title>Введение в статические сайты | Триада Статики</title>
+    <script src="https://cdn.jsdelivr.net/npm/@unocss/runtime"></script>
     <link rel="stylesheet" href="../uno.css">
-</head>
+    <style>
+        .concept-card {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            border-left: 4px solid #3b82f6;
+        }
+        .concept-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.15);
+        }
+        
+        .workflow-step {
+            counter-increment: step-counter;
+            margin-bottom: 2rem;
+            padding-left: 3rem;
+            position: relative;
+        }
+        .workflow-step::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: #3b82f6;
+            color: white;
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        
+        .benefit-grid {
+            display: grid;
+            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
 
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+        .comparison-table th,
+        .comparison-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .comparison-table th {
+            background-color: #f8fafc;
+            font-weight: 600;
+            color: #374151;
+        }
+        .comparison-table tr:hover {
+            background-color: #f9fafb;
+        }
+
+        .architecture-diagram {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            border: 1px solid #e5e7eb;
+        }
+
+        @media (max-width: 768px) {
+            .workflow-step {
+                padding-left: 2.5rem;
+            }
+            .benefit-grid {
+                grid-template-columns: 1fr;
+            }
+            .comparison-table {
+                font-size: 0.875rem;
+            }
+            .comparison-table th,
+            .comparison-table td {
+                padding: 0.75rem 0.5rem;
+            }
+            .architecture-diagram {
+                padding: 1rem;
+                margin: 1rem 0;
+            }
+        }
+    </style>
+</head>
 <body class="body-def reset-spacing">
 
     <header class="btn-primary flex-center p-4">
-        <h1 class="text-gradient">Фреймворки для статических сайтов</h1>
+        <h1 class="text-gradient">Введение в статические сайты</h1>
     </header>
 
     <nav class="nav space-y-3">
         <button class="nav-a hover:bg-gray-800 hover:shadow-lg" id="menuToggle">☰ Меню</button>
         <a href="../index.html" class="nav-a hover:bg-gray-800 hover:shadow-lg">Главная</a>
-        <a href="" class="nav-a hover:bg-gray-800 hover:shadow-lg">Контакты</a>
+        <a href="#" class="nav-a hover:bg-gray-800 hover:shadow-lg">Контакты</a>
     </nav>
 
+    <main class="main-def">
+        <!-- Гер-секция -->
+        <section class="card bg-gradient-to-r from-blue-50 to-indigo-50 border-l-4 border-blue-500">
+            <div class="flex flex-col md:flex-row items-center gap-6">
+                <div class="flex-1">
+                    <h1 class="text-3xl md:text-4xl font-bold text-blue-800 mb-4">Статические сайты</h1>
+                    <h2 class="text-xl md:text-2xl text-blue-600 mb-4">Простота, скорость и безопасность</h2>
+                    <p class="text-gray-700 text-lg leading-relaxed">
+                        Статические сайты возвращаются в веб-разработку с новой силой. Благодаря современным генераторам 
+                        статических сайтов, они предлагают производительность корпоративного уровня, беспрецедентную 
+                        безопасность и простоту развертывания.
+                    </p>
+                </div>
+                <div class="logo-container">
+                    <div class="text-6xl md:text-8xl text-blue-500">⚡</div>
+                </div>
+            </div>
+        </section>
 
+        <!-- Что такое статический сайт -->
+        <section class="card">
+            <h2 class="main-title mb-6">Что такое статический сайт?</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                <div class="concept-card bg-white p-6 rounded-lg border border-gray-200">
+                    <h3 class="text-xl font-bold text-blue-800 mb-3">📄 Статический сайт</h3>
+                    <p class="text-gray-700 mb-3">
+                        Веб-сайт, состоящий из заранее сгенерированных HTML, CSS и JavaScript файлов. 
+                        Каждая страница существует как отдельный файл на сервере.
+                    </p>
+                    <ul class="text-gray-600 space-y-1">
+                        <li>• Файлы загружаются "как есть"</li>
+                        <li>• Нет серверной обработки при запросе</li>
+                        <li>• Идеально для кэширования CDN</li>
+                    </ul>
+                </div>
 
+                <div class="concept-card bg-white p-6 rounded-lg border border-gray-200">
+                    <h3 class="text-xl font-bold text-blue-800 mb-3">🔄 Динамический сайт</h3>
+                    <p class="text-gray-700 mb-3">
+                        Сайт, где страницы генерируются "на лету" при каждом запросе пользователя, 
+                        обычно с использованием серверных языков и баз данных.
+                    </p>
+                    <ul class="text-gray-600 space-y-1">
+                        <li>• Контент генерируется при запросе</li>
+                        <li>• Использует серверные технологии</li>
+                        <li>• Сложнее в масштабировании</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="architecture-diagram">
+                <h3 class="text-lg font-bold text-gray-800 mb-4 text-center">Архитектура статического сайта</h3>
+                <div class="flex flex-col items-center">
+                    <div class="flex items-center justify-between w-full max-w-2xl mb-4">
+                        <div class="text-center">
+                            <div class="bg-blue-100 p-3 rounded-lg">Исходные файлы</div>
+                            <div class="text-sm text-gray-600 mt-1">Markdown, шаблоны</div>
+                        </div>
+                        <div class="text-2xl mx-4">→</div>
+                        <div class="text-center">
+                            <div class="bg-green-100 p-3 rounded-lg">Генератор</div>
+                            <div class="text-sm text-gray-600 mt-1">Gatsby, Hugo, Jekyll</div>
+                        </div>
+                        <div class="text-2xl mx-4">→</div>
+                        <div class="text-center">
+                            <div class="bg-purple-100 p-3 rounded-lg">HTML/CSS/JS</div>
+                            <div class="text-sm text-gray-600 mt-1">Готовый сайт</div>
+                        </div>
+                    </div>
+                    <div class="text-2xl mb-4">↓</div>
+                    <div class="text-center">
+                        <div class="bg-yellow-100 p-3 rounded-lg">CDN + Хостинг</div>
+                        <div class="text-sm text-gray-600 mt-1">Netlify, Vercel, GitHub Pages</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Преимущества статических сайтов -->
+        <section class="card">
+            <h2 class="main-title mb-6">Преимущества статических сайтов</h2>
+            
+            <div class="benefit-grid">
+                <div class="bg-white p-6 rounded-lg border border-green-200">
+                    <h3 class="text-lg font-bold text-green-800 mb-3">🚀 Производительность</h3>
+                    <p class="text-gray-700 mb-3">Мгновенная загрузка благодаря отсутствию серверных запросов и эффективному кэшированию.</p>
+                    <ul class="text-gray-600 text-sm space-y-1">
+                        <li>• 90+ баллов в Lighthouse из коробки</li>
+                        <li>• Глобальное распространение через CDN</li>
+                        <li>• Минимальное время до первого байта</li>
+                    </ul>
+                </div>
+
+                <div class="bg-white p-6 rounded-lg border border-green-200">
+                    <h3 class="text-lg font-bold text-green-800 mb-3">🛡️ Безопасность</h3>
+                    <p class="text-gray-700 mb-3">Отсутствие серверной логики и баз данных устраняет большинство векторов атак.</p>
+                    <ul class="text-gray-600 text-sm space-y-1">
+                        <li>• Нет уязвимостей баз данных</li>
+                        <li>• Защита от DDoS-атак</li>
+                        <li>• Нет точек входа для инъекций</li>
+                    </ul>
+                </div>
+
+                <div class="bg-white p-6 rounded-lg border border-green-200">
+                    <h3 class="text-lg font-bold text-green-800 mb-3">💰 Экономичность</h3>
+                    <p class="text-gray-700 mb-3">Значительно меньшие затраты на хостинг и обслуживание по сравнению с динамическими сайтами.</p>
+                    <ul class="text-gray-600 text-sm space-y-1">
+                        <li>• Дешевый или бесплатный хостинг</li>
+                        <li>• Меньше серверных ресурсов</li>
+                        <li>• Снижение затрат на обслуживание</li>
+                    </ul>
+                </div>
+
+                <div class="bg-white p-6 rounded-lg border border-green-200">
+                    <h3 class="text-lg font-bold text-green-800 mb-3">⚡ Масштабируемость</h3>
+                    <p class="text-gray-700 mb-3">Легкое масштабирование до миллионов пользователей без изменения архитектуры.</p>
+                    <ul class="text-gray-600 text-sm space-y-1">
+                        <li>• Горизонтальное масштабирование</li>
+                        <li>• Глобальное кэширование CDN</li>
+                        <li>• Отказоустойчивость</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Сравнение статических и динамических сайтов -->
+        <section class="card">
+            <h2 class="main-title mb-6">Сравнение: Статические vs Динамические сайты</h2>
+            
+            <div class="overflow-x-auto">
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Характеристика</th>
+                            <th>Статические сайты</th>
+                            <th>Динамические сайты</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Производительность</strong></td>
+                            <td class="text-green-600">🚀 Очень высокая</td>
+                            <td class="text-amber-600">⚡ Зависит от сервера</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Безопасность</strong></td>
+                            <td class="text-green-600">🛡️ Очень высокая</td>
+                            <td class="text-red-600">⚠️ Требует защиты</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Стоимость хостинга</strong></td>
+                            <td class="text-green-600">💰 Низкая</td>
+                            <td class="text-amber-600">💸 Средняя/высокая</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Масштабируемость</strong></td>
+                            <td class="text-green-600">📈 Легкая</td>
+                            <td class="text-amber-600">📊 Сложная</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Динамический контент</strong></td>
+                            <td class="text-amber-600">📝 Через API</td>
+                            <td class="text-green-600">🔄 Встроенная</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Сложность разработки</strong></td>
+                            <td class="text-green-600">🎯 Низкая/средняя</td>
+                            <td class="text-amber-600">🏗️ Высокая</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Когда использовать статические сайты -->
+        <section class="card">
+            <h2 class="main-title mb-6">Когда использовать статические сайты?</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-blue-50 p-6 rounded-lg border border-blue-200">
+                    <h3 class="text-xl font-bold text-blue-800 mb-4">✅ Идеальные случаи</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <span class="text-blue-500 mr-2">✓</span>
+                            <span><strong>Корпоративные сайты</strong> - визитки, лендинги, презентации</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-blue-500 mr-2">✓</span>
+                            <span><strong>Блоги и документация</strong> - техническая документация, личные блоги</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-blue-500 mr-2">✓</span>
+                            <span><strong>Портфолио</strong> - сайты-портфолио, галереи работ</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-blue-500 mr-2">✓</span>
+                            <span><strong>Интернет-магазины</strong> - с использованием headless CMS</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="bg-amber-50 p-6 rounded-lg border border-amber-200">
+                    <h3 class="text-xl font-bold text-amber-800 mb-4">⚠️ Ограничения</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <span class="text-amber-500 mr-2">!</span>
+                            <span><strong>Часто меняющийся контент</strong> - требуется пересборка</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-amber-500 mr-2">!</span>
+                            <span><strong>Пользовательский контент</strong> - комментарии, формы</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-amber-500 mr-2">!</span>
+                            <span><strong>Сложная бизнес-логика</strong> - требуется серверная обработка</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-amber-500 mr-2">!</span>
+                            <span><strong>Персонализация</strong> - ограниченные возможности</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Процесс работы -->
+        <section class="card">
+            <h2 class="main-title mb-6">Как работают статические генераторы</h2>
+            
+            <div class="workflow-steps">
+                <div class="workflow-step">
+                    <h3 class="text-lg font-bold text-gray-800 mb-2">1. Подготовка контента</h3>
+                    <p class="text-gray-700 mb-3">Создание контента в форматах Markdown, JSON или через CMS.</p>
+                    <div class="bg-gray-100 p-4 rounded text-sm">
+                        <strong>Форматы:</strong> Markdown, JSON, YAML, MDX<br>
+                        <strong>Инструменты:</strong> Headless CMS (Contentful, Strapi)
+                    </div>
+                </div>
+
+                <div class="workflow-step">
+                    <h3 class="text-lg font-bold text-gray-800 mb-2">2. Разработка шаблонов</h3>
+                    <p class="text-gray-700 mb-3">Создание компонентов и шаблонов с использованием современных технологий.</p>
+                    <div class="bg-gray-100 p-4 rounded text-sm">
+                        <strong>Технологии:</strong> React, Vue, Handlebars, Liquid<br>
+                        <strong>Стили:</strong> CSS-in-JS, SASS, Tailwind
+                    </div>
+                </div>
+
+                <div class="workflow-step">
+                    <h3 class="text-lg font-bold text-gray-800 mb-2">3. Сборка сайта</h3>
+                    <p class="text-gray-700 mb-3">Генератор обрабатывает контент и шаблоны, создавая готовые HTML-страницы.</p>
+                    <div class="bg-gray-100 p-4 rounded text-sm">
+                        <strong>Процесс:</strong> Компиляция, минификация, оптимизация<br>
+                        <strong>Результат:</strong> Папка с готовыми HTML, CSS, JS файлами
+                    </div>
+                </div>
+
+                <div class="workflow-step">
+                    <h3 class="text-lg font-bold text-gray-800 mb-2">4. Деплой</h3>
+                    <p class="text-gray-700 mb-3">Размещение сгенерированных файлов на хостинге или CDN.</p>
+                    <div class="bg-gray-100 p-4 rounded text-sm">
+                        <strong>Платформы:</strong> Netlify, Vercel, GitHub Pages<br>
+                        <strong>Особенности:</strong> Автоматический деплой, предварительные просмотры
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Современные возможности -->
+        <section class="card">
+            <h2 class="main-title mb-6">Современные возможности статических сайтов</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-white p-6 rounded-lg border border-purple-200">
+                    <h3 class="text-lg font-bold text-purple-800 mb-3">🔗 Headless CMS</h3>
+                    <p class="text-gray-700 mb-3">Использование систем управления контентом без привязки к фронтенду.</p>
+                    <ul class="text-gray-600 text-sm space-y-1">
+                        <li>• Contentful, Strapi, Sanity</li>
+                        <li>• API-first подход</li>
+                        <li>• Разделение контента и представления</li>
+                    </ul>
+                </div>
+
+                <div class="bg-white p-6 rounded-lg border border-purple-200">
+                    <h3 class="text-lg font-bold text-purple-800 mb-3">⚡ JAMstack</h3>
+                    <p class="text-gray-700 mb-3">Современная архитектура веб-разработки.</p>
+                    <ul class="text-gray-600 text-sm space-y-1">
+                        <li>• JavaScript, APIs, Markup</li>
+                        <li>• Декомпозиция фронтенда и бэкенда</li>
+                        <li>• Лучшие практики производительности</li>
+                    </ul>
+                </div>
+
+                <div class="bg-white p-6 rounded-lg border border-purple-200">
+                    <h3 class="text-lg font-bold text-purple-800 mb-3">📱 Progressive Web Apps</h3>
+                    <p class="text-gray-700 mb-3">Статические сайты как полноценные приложения.</p>
+                    <ul class="text-gray-600 text-sm space-y-1">
+                        <li>• Оффлайн-работа</li>
+                        <li>• Push-уведомления</li>
+                        <li>• Установка на устройство</li>
+                    </ul>
+                </div>
+
+                <div class="bg-white p-6 rounded-lg border border-purple-200">
+                    <h3 class="text-lg font-bold text-purple-800 mb-3">🔍 Пререндеринг и SEO</h3>
+                    <p class="text-gray-700 mb-3">Оптимизация для поисковых систем из коробки.</p>
+                    <ul class="text-gray-600 text-sm space-y-1">
+                        <li>• Готовый HTML для краулеров</li>
+                        <li>• Структурированные данные</li>
+                        <li>• Автоматические sitemap</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Призыв к действию -->
+        <section class="card bg-blue-50 border-l-4 border-blue-500">
+            <h2 class="text-2xl font-bold text-blue-800 mb-4">Готовы начать?</h2>
+            <div class="prose max-w-none">
+                <p class="text-blue-700 mb-4">
+                    Теперь, когда вы понимаете преимущества статических сайтов, пришло время выбрать подходящий инструмент:
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
+                    <a href="../Pages/Gatsby.html" class="bg-white p-4 rounded-lg border border-purple-200 text-center hover:shadow-md transition-shadow">
+                        <div class="text-purple-600 font-bold mb-2">Gatsby</div>
+                        <div class="text-sm text-gray-600">Для сложных React-проектов</div>
+                    </a>
+                    <a href="../Pages/Hugo.html" class="bg-white p-4 rounded-lg border border-green-200 text-center hover:shadow-md transition-shadow">
+                        <div class="text-green-600 font-bold mb-2">Hugo</div>
+                        <div class="text-sm text-gray-600">Для максимальной скорости</div>
+                    </a>
+                    <a href="../Pages/Jekyll.html" class="bg-white p-4 rounded-lg border border-amber-200 text-center hover:shadow-md transition-shadow">
+                        <div class="text-amber-600 font-bold mb-2">Jekyll</div>
+                        <div class="text-sm text-gray-600">Для простоты и блогов</div>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
 
     <footer class="nav">
-        <p class="nav-a">&copy Vlad </p>
-        <p class="nav-a">Tarakanov</p>
+        <p class="nav-a">&copy Vlad Tarakanov</p>
     </footer>
 
     <div class="sidebar" id="sidebar">
@@ -71,6 +494,6 @@
             if (e.key === 'Escape') closeSidebar();
         });
     </script>
-    
+
 </body>
 </html>
