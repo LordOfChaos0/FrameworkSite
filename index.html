@@ -44,7 +44,6 @@
             font-size: 0.875rem;
         }
 
-        /* Исправления для логотипов */
         .logo-container {
             display: flex;
             align-items: center;
@@ -87,11 +86,10 @@
     <nav class="nav space-y-3">
         <button class="nav-a hover:bg-gray-800 hover:shadow-lg" id="menuToggle">☰ Меню</button>
         <a href="./index.html" class="nav-a hover:bg-gray-800 hover:shadow-lg">Главная</a>
-        <a href="#" class="nav-a hover:bg-gray-800 hover:shadow-lg">Контакты</a>
     </nav>
     
     <main class="main-def">
-        <!-- Гер-секция -->
+
         <section class="card text-center">
             <h1 class="main-title">Gatsby. Hugo. Jekyll.</h1>
             <h3 class="subtitle">Мощь React, скорость Go или классика Ruby? Найдите свой идеальный фреймворк для статического сайта.</h3>
@@ -412,10 +410,53 @@
                 </div>
             </div>
         </section>
+
+        <section class="card text-center">
+            <h2 class="main-title mb-4">Готовы выбрать свой фреймворк?</h2>
+            <p class="text-gray-700 mb-6">
+                Изучите подробные руководства по каждому фреймворку или посмотрите детальное сравнение
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="./Pages/tutorials.html" class="bg-purple-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-purple-700 transition-colors">
+                    Начать с туториалов
+                </a>
+                <a href="./Pages/comparison.html" class="bg-gray-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-700 transition-colors">
+                    Сравнить фреймворки
+                </a>
+            </div>
+        </section>
+
     </main>
 
     <footer class="nav">
-        <p class="nav-a">&copy Vlad Tarakanov</p>
+        <div>
+            <h4 class="nav-a">Контакты</h4>
+            <div>
+                <p class="nav-a">
+                    <span class="footer-label">Автор:</span>
+                    <span class="footer-value">Vlad Tarakanov</span>
+                </p>
+                <p class="nav-a">
+                    <span class="footer-label">Email:</span>
+                    <a href="mailto:v.v.tarakanov04.05@gmail.com" class="nav-a hover:bg-gray-800 hover:shadow-lg">
+                        v.v.tarakanov04.05@gmail.com
+                    </a>
+                </p>
+                <p class="nav-a">
+                    <span class="nav-a">Исходный код:</span>
+                    <a href="https://github.com/LordOfChaos0/LordOfChaos.github.io" 
+                       class="nav-a hover:bg-gray-800 hover:shadow-lg">
+                        GitHub Repository
+                    </a>
+                </p>
+
+            </div>
+            <div>
+                <p class="nav-a">
+                    © 2024 Vlad Tarakanov. Все права защищены.
+                </p>
+            </div>
+        </div>
     </footer>
 
     <div class="sidebar" id="sidebar">
@@ -426,9 +467,11 @@
                 <li><a href="./index.html" class="nav-a hover:bg-gray-800 hover:shadow-lg">Главная</a></li>
                 <li><a href="./Pages/comparison.html" class="nav-a hover:bg-gray-800 hover:shadow-lg">Детальное сравнение</a></li>
                 <li><a href="./Pages/intro-to-statics.html" class="nav-a hover:bg-gray-800 hover:shadow-lg">Введение в статику</a></li>
+                <li><a href="./Pages/tutorials.html" class="nav-a hover:bg-gray-800 hover:shadow-lg">Туториалы</a></li>
                 <li><a href="./Pages/Gatsby.html" class="nav-a hover:bg-gray-800 hover:shadow-lg">Gatsby</a></li>
                 <li><a href="./Pages/Hugo.html" class="nav-a hover:bg-gray-800 hover:shadow-lg">Hugo</a></li>
                 <li><a href="./Pages/Jekyll.html" class="nav-a hover:bg-gray-800 hover:shadow-lg">Jekyll</a></li>
+                <li><a href="./Pages/case-studies.html" class="nav-a hover:bg-gray-800 hover:shadow-lg">Примеры использования</a></li>
             </ul>
         </nav>
     </div>
